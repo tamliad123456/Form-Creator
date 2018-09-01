@@ -17,6 +17,11 @@
             echo "The user $username has logged on successfully";
             echo file_get_contents("createQuery.htm");
         }
+        else if($username == "Ziv" && $password == "Drukker")
+        {
+            echo "The user $username has logged on successfully";
+            echo file_get_contents("createQuery.htm");
+        }
         else
         {
             echo "There is no such user";

@@ -2,6 +2,7 @@
 var qId = 1
 
 function getCardWithId() {
+    //const
     var card = '<div class="row justify-content-center" id = "q' + qId.toString() + '" style="margin:2%">\
     <div class="col-xl-6 col-lg-7 col-md-9"> \
     <div class="card shadow-lg" id="card" style="padding:2%"> \
@@ -10,22 +11,27 @@ function getCardWithId() {
 }
 
 function getDiv() {
+    //const
     return '<div class="input-group input-group-lg pb-2">';
 }
 
 function getQuestionTitle(type) {
+    //const
     return '<h4 style="margin-top:1%;margin-right:1.5%">' + type + ': </h4>';
 }
 
 function getInput(placeholder = "Question") {
+    //const
     return '<input type="text" class="form-control" placeholder="' + placeholder + '" style="margin-left:2%; margin-right:2%">';
 }
 
 function getRemoveBtn(qId) {
-    return '<input type="button" onclick="removeQuestion(\'q' + qId.toString() + '\')" style="margin:auto; line-height: 0px;width: 5%; height: 5%; background-color: red; border-color: red; text-align:center" value="-" class="btn btn-primary btn-lg">'
+    //const
+    return '<input type="button" id="rem' + qId.toString() + '" onclick="removeQuestion(\'q' + qId.toString() + '\')" style="margin:auto; line-height: 0px;width: 5%; height: 5%; background-color: red; border-color: red; text-align:center" value="X" class="btn btn-primary btn-lg">'
 }
 
 function closeDivs(num) {
+    //closes a number of divs
     var divToClose = "";
 
     for (var i = 0; i < num; i++) {
@@ -37,8 +43,6 @@ function closeDivs(num) {
 
 function addQuestion() {
     // Add an element to the html data
-    //var addQuest = '<div class="input-group input-group-lg pb-2" id = "q' + qId.toString() + '"><h4 style="margin-top:1%;margin-right:1.5%">Question: </h4><input type="text" class="form-control" placeholder="Question" aria-label="Search" name= "Question"><input type="button" onclick="removeQuestion(\'q' + qId.toString() + '\')" style="margin:auto; line-height: 0px;width: 5%; height: 5%; background-color: red; border-color: red; text-align:center" value="-" class="btn btn-primary btn-lg"></div>';
-    //document.getElementById("card").insertAdjacentHTML('beforeend', addQuest);
     var addQuest = getCardWithId(qId);
     addQuest += getQuestionTitle("Question");
     addQuest += getInput();
@@ -52,6 +56,19 @@ function removeQuestion(q) {
     // Removes an element from the document
     var element = document.getElementById(q);
     element.remove(element);
+    var check = false;
+    for (var i = 1; i <= qId; i++) {
+        if (!document.getElementById('q' + i.toString())) {
+            check = true;
+        }
+        else if (check) {
+            document.getElementById('q' + i.toString()).id = 'q' + (i - 1).toString();
+            document.getElementById('rem' + i.toString()).setAttribute("onClick", "removeQuestion('q" + (i - 1).toString() + "')");
+            document.getElementById('rem' + i.toString()).id = 'rem' + (i - 1).toString();
+        }
+
+    }
+    qId--;
 }
 
 function addRadioOrCheckBox(checkboxOrRadio) {
