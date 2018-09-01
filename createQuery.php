@@ -7,7 +7,7 @@
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
                 <link rel="stylesheet" href="bootstrap.css">
         </head>
-<body>
+<body id = "TheBody">
     <?php
         $username = $_POST['Username'];
         $password = $_POST['Password'];
