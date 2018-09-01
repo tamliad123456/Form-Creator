@@ -1,0 +1,70 @@
+<html>
+
+<head>
+    <title>Form Example</title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="bootstrap.css">
+</head>
+
+<body class="body-control">
+    <div class="row justify-content-center">
+        <div class="col-xl-6 col-lg-7 col-md-9">
+            <div class="card shadow-lg">
+                <div class="card-body p-4 p-md-5">
+                    <center>
+                        <h1 class="display-4" style="margin:10%">Please answer the Question</h1>
+                    </center>
+                    <form action="submitQuery.php" method="POST">
+                        <h4 class="display-5" style="margin:2%">Some Question?</h4>
+                        <br>
+                        <input type="text" class="form-control" placeholder="answer" style="margin-left:2%; margin-right:2%; margin-top:2%">
+                        <br>
+                        <h4 class="display-5" style="margin:2%">Some Radio Question?</h4>
+                        <div class="input-group input-group-lg pb-2" style="flex-wrap:nowrap">
+                            <input type="Radio" class="form-control" placeholder="answer" id="radio1" name="radioQestion" width="50px" height="50px"
+                                style="margin-left:2%; margin-right:2%; width:3%; height:5%">
+                            <lable for="radio1" style="width: 97%; line-height: 175%">option 1</lable>
+                        </div>
+                        <div class="input-group input-group-lg pb-2" style="flex-wrap:nowrap">
+                            <input type="Radio" class="form-control" placeholder="answer" id="radio2" name="radioQestion" width="50px" height="50px"
+                                style="margin-left:2%; margin-right:2%; width:3%; height:5%">
+                            <lable for="radio2" style="width: 97%; line-height: 175%">option 2</lable>
+                        </div>
+                        <div class="input-group input-group-lg pb-2" style="flex-wrap:nowrap;">
+                            <input type="Radio" class="form-control" placeholder="answer" id="radio3" name="radioQestion" width="50px" height="50px"
+                                style="margin-left:2%; margin-right:2%; width:3%; height:5%">
+                            <lable for="radio3" style="width: 97%; line-height: 175%">option 3</lable>
+                        </div>
+
+
+
+
+                        <h4 class="display-5" style="margin:2%">Some checkbox Question?</h4>
+                        <div class="input-group input-group-lg pb-2" style="flex-wrap:nowrap">
+                            <input type="checkbox" class="form-control" placeholder="answer" id="checkbox1" name="checkboxQuestion" width="50px" height="50px"
+                                style="margin-left:2%; margin-right:2%; width:3%; height:5%">
+                            <lable for="checkbox1" style="width: 97%; line-height: 175%">option 1</lable>
+                        </div>
+                        <div class="input-group input-group-lg pb-2" style="flex-wrap:nowrap">
+                            <input type="checkbox" class="form-control" placeholder="answer" id="checkbox2" name="checkboxQuestion" width="50px" height="50px"
+                                style="margin-left:2%; margin-right:2%; width:3%; height:5%">
+                            <lable for="checkbox2" style="width: 97%; line-height: 175%">option 2</lable>
+                        </div>
+                        <div class="input-group input-group-lg pb-2" style="flex-wrap:nowrap;">
+                            <input type="checkbox" class="form-control" placeholder="answer" id="checkbox3" name="checkboxQuestion" width="50px" height="50px"
+                                style="margin-left:2%; margin-right:2%; width:3%; height:5%">
+                            <lable for="checkbox3" style="width: 97%; line-height: 175%">option 3</lable>
+                        </div>
+                        <center>
+                        <input type="submit" style="margin:2%" value="Submit answers" class="btn btn-primary btn-lg">
+                    </center>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

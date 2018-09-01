@@ -67,6 +67,11 @@ body {
   color: #1e2022;
   text-align: left;
   background-color: #fff;
+  background-image: url("background.png"); 
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: auto;
+
 }
 
 [tabindex="-1"]:focus {
@@ -1807,6 +1812,7 @@ pre code {
 .table-responsive > .table-bordered {
   border: 0;
 }
+
 
 .form-control {
   display: block;
