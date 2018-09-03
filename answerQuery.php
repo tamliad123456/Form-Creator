@@ -15,11 +15,12 @@
                     <center>
                         <h1 class="display-4" style="margin:10%">Please answer the Question</h1>
                     </center>
+                    <form action="submitQuery.php" method="POST">
     <?php
 
     $guid = $_GET["id"];
     $number = 1;
-    
+
     if($guid == "1a2b3c")
     {
         addQuestionString("Hello");
@@ -30,6 +31,7 @@
         $number++;
         addQuestionString("Friend");
         addCheckBox($number, 3, array("option1", "option2", "option3"));
+        addSubmitButton();
     }
 
     function addQuestion($number)
@@ -69,7 +71,14 @@
         }
     }
 
+    function addSubmitButton()
+    {
+        echo '<center> <input type="submit" style="margin:2%" value="Submit Answers" class="btn btn-primary btn-lg"> </center';
+
+    }
+
     ?>
+    </form>
     </div>
 </div>
 </div>
