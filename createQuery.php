@@ -1,4 +1,4 @@
-<html>
+<html id = "html">
     <head>
                 <title>create a querry</title>
                 <script src="addQuestions.js"></script>
@@ -12,14 +12,8 @@
         $username = $_POST['Username'];
         $password = $_POST['Password'];
 
-        if($username == "Tamir" && $password == "Eliyahu")
+        if(($username == "Tamir" && $password == "Eliyahu") || ($username == "Ziv" && $password == "Drukker"))
         {
-            echo "The user $username has logged on successfully";
-            echo file_get_contents("createQuery.htm");
-        }
-        else if($username == "Ziv" && $password == "Drukker")
-        {
-            echo "The user $username has logged on successfully";
             echo file_get_contents("createQuery.htm");
         }
         else

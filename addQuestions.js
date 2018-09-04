@@ -1,4 +1,3 @@
-
 var qId = 1
 
 function getCardWithId() {
@@ -60,8 +59,7 @@ function removeQuestion(q) {
     for (var i = 1; i <= qId; i++) {
         if (!document.getElementById('q' + i.toString())) {
             check = true;
-        }
-        else if (check) {
+        } else if (check) {
             document.getElementById('q' + i.toString()).id = 'q' + (i - 1).toString();
             document.getElementById('rem' + i.toString()).setAttribute("onClick", "removeQuestion('q" + (i - 1).toString() + "')");
             document.getElementById('rem' + i.toString()).id = 'rem' + (i - 1).toString();
@@ -78,11 +76,9 @@ function addRadioOrCheckBox(checkboxOrRadio) {
     addQuest = getCardWithId(qId);
     if (checkboxOrRadio == "radio") {
         addQuest += getQuestionTitle("Radio");
-    }
-    else if (checkboxOrRadio == "checkbox") {
+    } else if (checkboxOrRadio == "checkbox") {
         addQuest += getQuestionTitle("Checkbox");
-    }
-    else {
+    } else {
         alert("Stop Fucking messing with my code!!!");
     }
     addQuest += getInput();
