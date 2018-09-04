@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="bootstrap.css">
     </head>
-    
+
     <body id = "TheBody">
         <div class="row justify-content-center">
                 <div class="col-xl-6 col-lg-7 col-md-9">
@@ -18,11 +18,24 @@
         $username = $_POST['Username'];
         $password = $_POST['Password'];
 
-        setcookie("ronUName", $username, time() + (3 * 60 * 60));
-        setcookie("ronPass", hash("sha256", $password), time() + (3 * 60 *60));
+        $db = new SQLite3('database.db');
+        $stmt = $db->prepare('SELECT uName, uPass FROM _users WHERE uName=:uname AND uPass=:upass');
+        $stmt->bindValue(':uname', $username, SQLITE3_TEXT);
+        $stmt->bindValue(':upass', $password, SQLITE3_TEXT);
+        $result = $stmt->execute();
+        $row = $result->fetchArray();
+        error_reporting(E_ERROR | E_PARSE);
 
-        if(($username == "Tamir" && $password == "Eliyahu") || ($username == "Ziv" && $password == "Drukker"))
+        $username = "";
+        $password = "";
+        if(count($row) > 1)
         {
+            $username = $row[0];
+            $password = $row[1];
+
+            setcookie("ronUName", $username, time() + (3 * 60 * 60));
+            setcookie("ronPass", hash("sha256", $password), time() + (3 * 60 *60));
+            
             echo "<center>";
             echo "<h1 class='display-4' style='margin:10%'>The user $username has logged on successfully</h1>";
             echo "<input type='button' style='margin:2%' value='create a query' onclick='post()' class='btn btn-primary btn-lg'>";
@@ -35,7 +48,6 @@
             echo "<h1 class='display-4' style='margin:10%'>username or password is incorrect</h1>";
             echo '</center>';
         }
-
         ?>
     </body>
 </html>
