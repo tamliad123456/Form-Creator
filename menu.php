@@ -17,11 +17,15 @@
         
         $username = $_POST['Username'];
         $password = $_POST['Password'];
+
+        setcookie("ronUName", $username, time() + (3 * 60 * 60));
+        setcookie("ronPass", hash("sha256", $password), time() + (3 * 60 *60));
+
         if(($username == "Tamir" && $password == "Eliyahu") || ($username == "Ziv" && $password == "Drukker"))
         {
             echo "<center>";
             echo "<h1 class='display-4' style='margin:10%'>The user $username has logged on successfully</h1>";
-            echo "<input type='button' style='margin:2%' value='create a query' onclick='post(\"$username\", \"$password\")' class='btn btn-primary btn-lg'>";
+            echo "<input type='button' style='margin:2%' value='create a query' onclick='post()' class='btn btn-primary btn-lg'>";
             echo "<input type='button' style='margin:2%' value='show answers for queries' class='btn btn-primary btn-lg'>";
             echo '</center>';
         }

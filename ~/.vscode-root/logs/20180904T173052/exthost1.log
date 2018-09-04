@@ -1,0 +1,26 @@
+[2018-09-04 17:30:55.026] [exthost1] [info] extension host started
+[2018-09-04 17:30:55.056] [exthost1] [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch {"startup":true,"activationEvent":"*"}
+[2018-09-04 17:30:55.057] [exthost1] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/debug-auto-launch/out/extension
+[2018-09-04 17:30:55.074] [exthost1] [info] ExtensionService#_doActivateExtension vscode.emmet {"startup":true,"activationEvent":"*"}
+[2018-09-04 17:30:55.074] [exthost1] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/emmet/out/extension
+[2018-09-04 17:30:55.154] [exthost1] [info] ExtensionService#_doActivateExtension vscode.git {"startup":true,"activationEvent":"*"}
+[2018-09-04 17:30:55.154] [exthost1] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/git/out/main
+[2018-09-04 17:30:55.359] [exthost1] [info] ExtensionService#_doActivateExtension vscode.merge-conflict {"startup":true,"activationEvent":"*"}
+[2018-09-04 17:30:55.359] [exthost1] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/merge-conflict/out/extension
+[2018-09-04 17:30:55.373] [exthost1] [info] ExtensionService#_doActivateExtension vscode.search-rg {"startup":true,"activationEvent":"*"}
+[2018-09-04 17:30:55.373] [exthost1] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/search-rg/out/extension
+[2018-09-04 17:30:55.384] [exthost1] [info] ExtensionService#_doActivateExtension eamodio.gitlens {"startup":true,"activationEvent":"*"}
+[2018-09-04 17:30:55.384] [exthost1] [info] ExtensionService#loadCommonJSModule /home/ziv0s/.vscode/extensions/eamodio.gitlens-8.5.6/out/extension
+[2018-09-04 17:30:55.571] [exthost1] [info] ExtensionService#_doActivateExtension ms-vsliveshare.vsliveshare {"startup":true,"activationEvent":"*"}
+[2018-09-04 17:30:55.571] [exthost1] [info] ExtensionService#loadCommonJSModule /home/ziv0s/.vscode/extensions/ms-vsliveshare.vsliveshare-0.3.623/out/src/extension
+[2018-09-04 17:30:56.877] [exthost1] [info] ExtensionService#_doActivateExtension felixfbecker.php-intellisense {"startup":true,"activationEvent":"workspaceContains:**/*.php"}
+[2018-09-04 17:30:56.877] [exthost1] [info] ExtensionService#loadCommonJSModule /home/ziv0s/.vscode/extensions/felixfbecker.php-intellisense-2.3.5/out/extension
+[2018-09-04 17:30:57.027] [exthost1] [info] eager extensions activated
+[2018-09-04 17:31:30.281] [exthost1] [info] ExtensionService#_doActivateExtension vscode.typescript-language-features {"startup":false,"activationEvent":"onLanguage:javascript"}
+[2018-09-04 17:31:30.281] [exthost1] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/typescript-language-features/out/extension
+[2018-09-04 17:31:45.267] [exthost1] [info] ExtensionService#_doActivateExtension vscode.extension-editing {"startup":false,"activationEvent":"onLanguage:typescript"}
+[2018-09-04 17:31:45.268] [exthost1] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/extension-editing/out/extension
+[2018-09-04 17:31:48.641] [exthost1] [info] ExtensionService#_doActivateExtension vscode.php-language-features {"startup":false,"activationEvent":"onLanguage:php"}
+[2018-09-04 17:31:48.641] [exthost1] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/php-language-features/out/phpMain
+[2018-09-04 17:35:55.595] [exthost1] [info] ExtensionService#_doActivateExtension vscode.html-language-features {"startup":false,"activationEvent":"onLanguage:html"}
+[2018-09-04 17:35:55.595] [exthost1] [info] ExtensionService#loadCommonJSModule /usr/share/code/resources/app/extensions/html-language-features/client/out/htmlMain

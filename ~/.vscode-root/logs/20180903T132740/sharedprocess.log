@@ -1,0 +1,36 @@
+[2018-09-03 13:27:44.406] [sharedprocess] [info] main {"machineId":"9ee6bd47babe485ea2739d0882ecb6dcb32bfefee27340675be423eba8b22af2"}
+[2018-09-03 13:27:44.459] [sharedprocess] [info] Scanned user extensions: 5
+[2018-09-03 13:27:44.502] [sharedprocess] [info] Scanned user extensions: 5
+[2018-09-03 13:27:44.504] [sharedprocess] [info] Scanned user extensions: 5
+[2018-09-03 13:27:44.510] [sharedprocess] [info] Scanned user extensions: 5
+[2018-09-03 13:27:44.555] [sharedprocess] [info] Scanned system extensions: 71
+[2018-09-03 13:27:44.559] [sharedprocess] [info] Scanned system extensions: 71
+[2018-09-03 13:27:44.562] [sharedprocess] [info] Scanned system extensions: 71
+[2018-09-03 13:27:45.529] [sharedprocess] [info] Scanned user extensions: 5
+[2018-09-03 13:27:45.628] [sharedprocess] [info] Scanned user extensions: 5
+[2018-09-03 13:27:46.588] [sharedprocess] [info] Installing extension: vscode-sqlite
+[2018-09-03 13:27:46.590] [sharedprocess] [info] Installing extension: php-intellisense
+[2018-09-03 13:27:46.599] [sharedprocess] [info] Scanned user extensions: 5
+[2018-09-03 13:27:46.606] [sharedprocess] [info] Scanned user extensions: 5
+[2018-09-03 13:27:49.868] [sharedprocess] [info] Downloaded extension: php-intellisense /tmp/4333b731-354b-4f7a-92d7-ca7983a3e354
+[2018-09-03 13:27:49.871] [sharedprocess] [info] Downloaded extension: vscode-sqlite /tmp/dadb4f56-1eac-478e-853f-910dab436039
+[2018-09-03 13:27:50.220] [sharedprocess] [info] Extracted extension to /home/ziv0s/.vscode/extensions/.alexcvzz.vscode-sqlite-0.3.0: alexcvzz.vscode-sqlite-0.3.0
+[2018-09-03 13:27:50.220] [sharedprocess] [info] Renamed to /home/ziv0s/.vscode/extensions/alexcvzz.vscode-sqlite-0.3.0
+[2018-09-03 13:27:50.220] [sharedprocess] [info] Installation completed. alexcvzz.vscode-sqlite-0.3.0
+[2018-09-03 13:27:50.226] [sharedprocess] [info] Extensions installed successfully: alexcvzz.vscode-sqlite
+[2018-09-03 13:27:50.334] [sharedprocess] [info] Scanned user extensions: 5
+[2018-09-03 13:27:50.379] [sharedprocess] [info] Scanned system extensions: 71
+[2018-09-03 13:27:50.794] [sharedprocess] [info] Extracted extension to /home/ziv0s/.vscode/extensions/.felixfbecker.php-intellisense-2.3.5: felixfbecker.php-intellisense-2.3.5
+[2018-09-03 13:27:50.794] [sharedprocess] [info] Renamed to /home/ziv0s/.vscode/extensions/felixfbecker.php-intellisense-2.3.5
+[2018-09-03 13:27:50.794] [sharedprocess] [info] Installation completed. felixfbecker.php-intellisense-2.3.5
+[2018-09-03 13:27:50.800] [sharedprocess] [info] Extensions installed successfully: felixfbecker.php-intellisense
+[2018-09-03 13:27:50.936] [sharedprocess] [info] Scanned user extensions: 5
+[2018-09-03 13:27:50.963] [sharedprocess] [info] Scanned system extensions: 71
+[2018-09-03 13:28:24.410] [sharedprocess] [info] Starting to clean up unused language packs.
+[2018-09-03 13:28:45.150] [sharedprocess] [info] Scanned user extensions: 5
+[2018-09-03 13:28:45.166] [sharedprocess] [info] Scanned user extensions: 5
+[2018-09-03 13:28:45.175] [sharedprocess] [info] Scanned user extensions: 5
+[2018-09-03 13:28:45.277] [sharedprocess] [info] Scanned system extensions: 71
+[2018-09-03 13:28:45.283] [sharedprocess] [info] Scanned system extensions: 71
+[2018-09-03 13:28:47.626] [sharedprocess] [info] Scanned user extensions: 5
+[2018-09-03 13:28:47.630] [sharedprocess] [info] Scanned user extensions: 5

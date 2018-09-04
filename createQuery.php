@@ -9,10 +9,20 @@
         </head>
 <body id = "TheBody">
     <?php
-        $username = $_POST['Username'];
-        $password = $_POST['Password'];
+        $username = "";
+        $password = "";
+        
+        if(isset($_COOKIE["ronUName"]))
+        {
+            $username = $_COOKIE["ronUName"];
+        }
 
-        if(($username == "Tamir" && $password == "Eliyahu") || ($username == "Ziv" && $password == "Drukker"))
+        if(isset($_COOKIE["ronPass"]))
+        {
+            $password = $_COOKIE["ronPass"];
+        }
+
+        if(($username != "" && $password != ""))
         {
             echo file_get_contents("createQuery.htm");
         }
