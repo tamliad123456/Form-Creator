@@ -19,14 +19,15 @@
         $password = $_POST['Password'];
 
         $db = new SQLite3('database.db');
-        $stmt = $db->prepare('SELECT uName, uPass FROM _users WHERE uName=:uname AND uPass=:upass');
-        $stmt->bindValue(':uname', $username, SQLITE3_TEXT);
-        $stmt->bindValue(':upass', $password, SQLITE3_TEXT);
+        $stmt = $db->prepare('SELECT uName, uPass FROM _users WHERE uName=? AND uPass=?');
+        $stmt->bindValue(1, $username, SQLITE3_TEXT);
+        $stmt->bindValue(2, $password, SQLITE3_TEXT);
         $result = $stmt->execute();
         $row = $result->fetchArray(SQLITE3_ASSOC);
 
         $username = "";
         $password = "";
+
         if($row != "" && count($row) > 1)
         {
             successfullLogin($row);
@@ -35,7 +36,6 @@
         {
             failedLogin();
         }
-
 
         function successfullLogin($row)
         {

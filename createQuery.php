@@ -16,7 +16,7 @@
         {
             $username = $_COOKIE["ronUName"];
         }
-
+        
         if(isset($_COOKIE["ronPass"]))
         {
             $password = $_COOKIE["ronPass"];
@@ -26,6 +26,7 @@
         {
             echo file_get_contents("createQuery.htm");
         }
+
         else
         {
             echo "There is no such user";
