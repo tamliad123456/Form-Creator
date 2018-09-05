@@ -23,15 +23,14 @@
         $stmt->bindValue(':uname', $username, SQLITE3_TEXT);
         $stmt->bindValue(':upass', $password, SQLITE3_TEXT);
         $result = $stmt->execute();
-        $row = $result->fetchArray();
-        error_reporting(E_ERROR | E_PARSE);
-
+        $row = $result->fetchArray(SQLITE3_ASSOC);
+        
         $username = "";
         $password = "";
         if(count($row) > 1)
         {
-            $username = $row[0];
-            $password = $row[1];
+            $username = $row['uName'];
+            $password = $row['uPass'];
 
             setcookie("ronUName", $username, time() + (3 * 60 * 60));
             setcookie("ronPass", hash("sha256", $password), time() + (3 * 60 *60));
