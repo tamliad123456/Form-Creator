@@ -24,10 +24,20 @@
         $stmt->bindValue(':upass', $password, SQLITE3_TEXT);
         $result = $stmt->execute();
         $row = $result->fetchArray(SQLITE3_ASSOC);
-        
+
         $username = "";
         $password = "";
-        if(count($row) > 1)
+        if($row != "" && count($row) > 1)
+        {
+            successfullLogin($row);
+        }
+        else
+        {
+            failedLogin();
+        }
+
+
+        function successfullLogin($row)
         {
             $username = $row['uName'];
             $password = $row['uPass'];
@@ -41,7 +51,8 @@
             echo "<input type='button' style='margin:2%' value='show answers for queries' class='btn btn-primary btn-lg'>";
             echo '</center>';
         }
-        else
+
+        function failedLogin()
         {
             echo "<center>";
             echo "<h1 class='display-4' style='margin:10%'>username or password is incorrect</h1>";
