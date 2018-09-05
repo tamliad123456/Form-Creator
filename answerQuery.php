@@ -19,18 +19,49 @@
                                 $guid = $_GET["id"];
                                 $number = 1;
 
-                                if($guid == "1a2b3c")
+                                $db = new SQLite3('database.db');
+
+                                $statement = $db->prepare('SELECT * FROM _queries WHERE formGUID = ?');
+                                $statement->bindValue(1, $guid);
+                                $result = $statement->execute();
+
+                                $questionArr = array();
+                                $i = 0;
+
+                                while($arr = ($result->fetchArray(SQLITE3_ASSOC)))
                                 {
-                                    addQuestionString("Hello");
-                                    addQuestion($number);
-                                    $number++;
-                                    addQuestionString("My");
-                                    addRadio($number, 3, array("option1", "option2", "option3"));
-                                    $number++;
-                                    addQuestionString("Friend");
-                                    addCheckBox($number, 3, array("option1", "option2", "option3"));
-                                    addSubmitButton();
+                                    $j = 0;
+                                    foreach($arr as &$row)
+                                    {
+                                        $questionArr[$i][$j] =  $row;
+                                        
+                                        $j++;
+                                    }
+                                    $i++;
                                 }
+                                $result->finalize();
+
+                                for($i = 0; $i < count($questionArr); $i++)
+                                {
+                                    $parameters = parseOptions($questionArr[$i][4]);
+                                    addQuestionString($questionArr[$i][3]);
+                                    if($questionArr[$i][5] == "input")
+                                    {
+                                        addQuestion($number);
+                                        $number++;
+                                    }
+                                    else if($questionArr[$i][5] == "radio")
+                                    {
+                                        addRadio($number, count($parameters), $parameters);
+                                        $number++;
+                                    }
+                                    else if($questionArr[$i][5] == "checkbox")
+                                    {
+                                        addCheckBox($number, count($parameters), $parameters);
+                                        $number++;
+                                    }
+                                }
+                                addSubmitButton();
 
                                 function addQuestion($number)
                                 {
@@ -41,6 +72,11 @@
                                 function addQuestionString($question)
                                 {
                                     echo "<h4 class='display-5' style='margin:2%'>$question</h4>";
+                                }
+                                
+                                function parseOptions($params)
+                                {
+                                    return explode("&&", $params);
                                 }
 
                                 function addRadio($number, $optionNumber, $arrayOfOptions)
