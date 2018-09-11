@@ -8,7 +8,7 @@
                 <link rel="stylesheet" href="bootstrap.css">
         </head>
 <body>
-<form action="sumbitQuery.php" menthod="post">
+<form action="sumbitQuery.php" method="POST">
     <div id = "TheBody">
     <?php
         $username = "";

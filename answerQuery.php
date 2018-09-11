@@ -79,9 +79,10 @@
         $statement = $db->prepare('SELECT * FROM _queries WHERE formGUID = ?');
         $statement->bindValue(1, $guid);
         $result = $statement->execute();
-        
+        $flag = false;
         while(($row = $result->fetchArray(SQLITE3_ASSOC))) 
         {
+            $flag = true;
             $parameters = parseOptions($row['parms']);
             addQuestionString($row['question']);
             if($row['type'] == "input")
@@ -96,6 +97,13 @@
             {
                 addCheckBox($row['qNum'], count($parameters), $parameters);
             }
+        }
+
+        if(!$flag)
+        {
+            echo "<script>alert('Are you having trouble mate? Stop messing with my code');
+            document.getElementById('TheBody').innerHTML = '<center><h1>Stop messing with my code</h1></center>';
+            </script>";
         }
         addSubmitButton();
         $result->finalize();

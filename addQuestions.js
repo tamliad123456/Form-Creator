@@ -19,7 +19,7 @@ function getQuestionTitle(type) {
     return '<h4 style="margin-top:1%;margin-right:1.5%">' + type + ': </h4>';
 }
 
-function getInput(placeholder = "Question", type) {
+function getInput(placeholder = "Question", type = "input") {
     //const
     return '<input type="text" class="form-control" placeholder="' + placeholder + '" style="margin-left:2%; margin-right:2%" name="q' + qId + type + '">';
 }
@@ -90,13 +90,13 @@ function addRadioOrCheckBox(checkboxOrRadio) {
     } else {
         alert("Stop Fucking messing with my code!!!");
     }
-    addQuest += getInput(checkboxOrRadio);
+    addQuest += getInput(checkboxOrRadio, checkboxOrRadio);
     addQuest += getRemoveBtn(qId);
     addQuest += closeDivs(1);
-    for (var i = 0; i < options; i++) {
+    for (var i = 1; i <= options; i++) {
         addQuest += getDiv();
-        addQuest += getQuestionTitle("Option" + (i + 1).toString());
-        addQuest += getInput("Option" + (i + 1).toString(), "option" + i.toString() + "&&");
+        addQuest += getQuestionTitle("Option" + i.toString());
+        addQuest += getInput("Option" + i.toString(), "&&" + "option" + i.toString());
         addQuest += closeDivs(1);
     }
     addQuest += closeDivs(3);

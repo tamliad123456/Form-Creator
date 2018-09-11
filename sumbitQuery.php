@@ -14,22 +14,23 @@
 
         do
         {
-            if(isset($_POST["q" + (string)$i + "input"]))
+            if(isset($_POST["q{$i}input"]))
             {
-                $questionArr["question"] = $_POST["q" + (string)$i + "input"];
+                $questionArr["question"] = $_POST["q{$i}input"];
                 $questionArr["type"] = "input";
+                $questionArr["params"] = "";
             }
-            else if(isset($_POST["q" + (string)$i + "radio"]))
+            else if(isset($_POST["q{$i}radio"]))
             {
-                $questionArr["question"] = $_POST["q" + (string)$i + "radio"];
+                $questionArr["question"] = $_POST["q{$i}radio"];
                 $questionArr["type"] = "radio";
-                $questionArr["params"] = parseParams($i);
+                $questionArr["params"] = parseParams("q$i");
             }
-            else if(isset($_POST["q" + (string)$i + "checkbox"]))
+            else if(isset($_POST["q{$i}checkbox"]))
             {
-                $questionArr["question"] = $_POST["q" + (string)$i + "checkbox"];
+                $questionArr["question"] = $_POST["q{$i}checkbox"];
                 $questionArr["type"] = "checkbox";
-                $questionArr["params"] = parseParams((string)$i);
+                $questionArr["params"] = parseParams("q$i");
             }
             else
             {
@@ -37,22 +38,22 @@
             }
 
             $questionArr["GUID"] = uniqid();
-            $questionArr["qNum"] = (string)$i;
+            $questionArr["qNum"] = $i;
             $i++;
-            $stringToInsert = sendQuery($questionArr, (string)$i);
-        } while (isset($_POST["q" + (string)$i + "input"]) || isset($_POST["q" + (string)$i + "checkbox"]) || isset($_POST["q" + (string)$i + "radio"]));
+            $stringToInsert = sendQuery($questionArr, $i);
+        } while (isset($_POST["q{$i}input"]) || isset($_POST["q{$i}checkbox"]) || isset($_POST["q{$i}radio"]));
 
 
         function parseParams($number)
         {
             $i = 2;
-            $string = $_POST["option1&&" + $number];
+            $string = $_POST["{$number}&&option1"];
             do
             {
-                $string += "&&";
-                $string +=  $_POST["option" + (string)$i + "&&" + $number];
+                $string = "{$string}&&";
+                $string =  $string. $_POST[$number."&&option$i"];
                 $i++;
-            }while(isset($_POST["option" + (string)$i + "&&" + $number]));
+            }while(isset($_POST["{$number}&&option{$i}"]));
             return $string;
         }
 
