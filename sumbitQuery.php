@@ -11,7 +11,7 @@
         $i = 1;
         
         $questionArr = array();
-
+        $GUID = uniqid();
         do
         {
             if(isset($_POST["q{$i}input"]))
@@ -37,7 +37,7 @@
                 #PLACEHOLDER for banning
             }
 
-            $questionArr["GUID"] = uniqid();
+            $questionArr["GUID"] = $GUID;
             $questionArr["qNum"] = $i;
             $i++;
             $stringToInsert = sendQuery($questionArr, $i);
