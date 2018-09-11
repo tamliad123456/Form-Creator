@@ -19,14 +19,14 @@ function getQuestionTitle(type) {
     return '<h4 style="margin-top:1%;margin-right:1.5%">' + type + ': </h4>';
 }
 
-function getInput(placeholder = "Question") {
+function getInput(placeholder = "Question", type) {
     //const
-    return '<input type="text" class="form-control" placeholder="' + placeholder + '" style="margin-left:2%; margin-right:2%">';
+    return '<input type="text" class="form-control" placeholder="' + placeholder + '" style="margin-left:2%; margin-right:2%" name="q' + qId + type + '">';
 }
 
 function getRemoveBtn(qId) {
     //const
-    return '<input type="button" id="rem' + qId.toString() + '" onclick="removeQuestion(\'q' + qId.toString() + '\')" style="margin:auto; line-height: 0px;width: 5%; height: 5%; background-color: red; border-color: red; text-align:center" value="X" class="btn btn-primary btn-lg">'
+    return '<input type="button" id="rem' + qId.toString() + '" onclick="removeQuestion(\'q' + qId.toString() + '\')" style="margin:auto;line-height: 0px;background-color: red;border-color: red;text-align:left;" value="X" class="btn btn-primary btn-lg">'
 }
 
 function closeDivs(num) {
@@ -71,7 +71,16 @@ function removeQuestion(q) {
 
 function addRadioOrCheckBox(checkboxOrRadio) {
     //Adding a checkbox or radio option
-    var options = prompt("enter number of options: ")
+    var options = "";
+    do {
+        options = prompt("enter number of options: ");
+        if(options == "" || isNaN(options))
+        {
+            alert("please insert only a number");
+        }
+    }
+    while (options == "" || isNaN(options));
+
     var addQuest;
     addQuest = getCardWithId(qId);
     if (checkboxOrRadio == "radio") {
@@ -81,13 +90,13 @@ function addRadioOrCheckBox(checkboxOrRadio) {
     } else {
         alert("Stop Fucking messing with my code!!!");
     }
-    addQuest += getInput();
+    addQuest += getInput(checkboxOrRadio);
     addQuest += getRemoveBtn(qId);
     addQuest += closeDivs(1);
     for (var i = 0; i < options; i++) {
         addQuest += getDiv();
         addQuest += getQuestionTitle("Option" + (i + 1).toString());
-        addQuest += getInput("Option" + (i + 1).toString());
+        addQuest += getInput("Option" + (i + 1).toString(), "option" + i.toString() + "&&");
         addQuest += closeDivs(1);
     }
     addQuest += closeDivs(3);

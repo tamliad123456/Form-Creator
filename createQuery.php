@@ -1,13 +1,15 @@
 <html id = "html">
     <head>
-                <title>create a querry</title>
+                <title>create a query</title>
                 <script src="addQuestions.js"></script>
 
                 <meta charset="utf-8">
                 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
                 <link rel="stylesheet" href="bootstrap.css">
         </head>
-<body id = "TheBody">
+<body>
+<form action="sumbitQuery.php" menthod="post">
+    <div id = "TheBody">
     <?php
         $username = "";
         $password = "";
@@ -33,6 +35,8 @@
         }
 
     ?>
+    </div>
+    </form>
 
 
 </body>

@@ -1,6 +1,6 @@
 <html id = "html">
     <head>
-        <title>create a querry</title>
+        <title>Menu</title>
         <script src="createQuery.js"></script>
 
         <meta charset="utf-8">
