@@ -43,6 +43,29 @@
             $stringToInsert = sendQuery($questionArr, $i);
         } while (isset($_POST["q{$i}input"]) || isset($_POST["q{$i}checkbox"]) || isset($_POST["q{$i}radio"]));
 
+        $db = new SQLite3("database.db");
+
+        $guids = getUserForms($db);
+
+        $insertString = "UPDATE _users SET guid=? WHERE uName=? AND uPass=?";
+        $statement = $db->prepare($insertString);
+
+        if($guids != "")
+        {
+        $statement->bindValue(1, "$guids&&$GUID");
+        }
+        else
+        {
+            $statement->bindValue(1, "$GUID");
+        }
+        $statement->bindValue(2, $_COOKIE["ronUName"]);
+        $statement->bindValue(3, $_COOKIE["ronPass"]);
+
+        $result = $statement->execute();
+        $db->close();
+        header("Location: menu.php");
+        exit;
+
 
         function parseParams($number)
         {
@@ -70,7 +93,32 @@
             $statement->bindValue(5, $arr["GUID"]);
 
             $statement->execute();
-            $db->close();
+            
+
+        }
+
+        function getUserForms($db)
+        {
+            $username = $_COOKIE["ronUName"];
+            $password = $_COOKIE["ronPass"];
+            
+            $getQuery = "SELECT guid FROM _users WHERE uName=? AND uPass=?";
+            $statement = $db->prepare($getQuery);
+
+            $statement->bindValue(1, $username);
+            $statement->bindValue(2, $password);
+            $result = $statement->execute();
+
+            $row = $result->fetchArray(SQLITE3_ASSOC);
+            if(isset($row["guid"]))
+            {
+                return $row["guid"];
+            }
+            else
+            {
+                return "";
+            }
+
         }
     ?>
 

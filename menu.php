@@ -1,7 +1,7 @@
 <html id = "html">
     <head>
         <title>Menu</title>
-        <script src="createQuery.js"></script>
+        <script src="menu.js"></script>
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -42,7 +42,7 @@
         {
             $username = $_COOKIE['ronUName'];
             $password = $_COOKIE['ronPass'];
-            
+
             $db = new SQLite3('database.db');
             $stmt = $db->prepare('SELECT uName, uPass FROM _users WHERE uName=? AND uPass=?');
             $stmt->bindValue(1, $username, SQLITE3_TEXT);
@@ -77,8 +77,8 @@
             
             echo "<center>";
             echo "<h1 class='display-4' style='margin:10%'>The user $username has logged on successfully</h1>";
-            echo "<input type='button' style='margin:2%' value='create a query' onclick='post()' class='btn btn-primary btn-lg'>";
-            echo "<input type='button' style='margin:2%' value='show answers for queries' class='btn btn-primary btn-lg'>";
+            echo "<input type='button' style='margin:2%' value='create a query' onclick='goToCreateQuery()' class='btn btn-primary btn-lg'>";
+            echo "<input type='button' style='margin:2%' value='show answers for queries' onclick='goToGetAnswers()' class='btn btn-primary btn-lg'>";
             echo '</center>';
         }
 
