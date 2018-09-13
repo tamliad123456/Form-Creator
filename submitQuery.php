@@ -1,3 +1,4 @@
+<?php include 'checkLogin.php'; ?>
 <html>
     <head>
                 <title>create a query</title>
@@ -7,7 +8,11 @@
                 <link rel="stylesheet" href="bootstrap.css">
         </head>
 <body id = "TheBody">
+
     <?php
+        ini_set("log_errors", 1);
+        ini_set("error_log", "/tmp/php-error.log");
+        error_log( "Hello, errors!" );
         $i = 1;
         
         $questionArr = array();
@@ -118,6 +123,12 @@
             {
                 return "";
             }
+
+        }
+
+
+        function checkUnameAndPass()
+        {
 
         }
     ?>

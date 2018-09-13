@@ -1,3 +1,4 @@
+<?php include 'checkLogin.php'; ?>
 <html id = "html">
     <head>
                 <title>create a query</title>
@@ -8,20 +9,22 @@
                 <link rel="stylesheet" href="bootstrap.css">
         </head>
 <body>
-<form action="sumbitQuery.php" method="POST">
+<form action="submitQuery.php" method="POST">
     <div id = "TheBody">
+
     <?php
         $username = "";
         $password = "";
         
-        if(isset($_COOKIE["ronUName"]))
+        if(isset($_COOKIE["ronUName"]) && isset($_COOKIE["ronPass"]))
         {
             $username = $_COOKIE["ronUName"];
-        }
-        
-        if(isset($_COOKIE["ronPass"]))
-        {
             $password = $_COOKIE["ronPass"];
+        }
+
+        else
+        {
+            echo '<script> window.location.href = "index.htm"; </script>';
         }
 
         if(($username != "" && $password != ""))
@@ -31,7 +34,7 @@
 
         else
         {
-            echo "There is no such user";
+            echo '<script> window.location.href = "index.htm"; </script>';
         }
 
     ?>
