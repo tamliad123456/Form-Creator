@@ -14,20 +14,22 @@
                         <center>
                             <h1 class="display-4" style="margin:10%">Please answer the Question</h1>
                         </center>
-                        <form action="submitQuery.php" method="POST">
+                        <form action="submitAnswers.php" method="POST">
 <?php
     
     //the function is returning a question with type of input
     function addQuestion($number)
     {
-        echo "<input type='text' class='form-control' name='q$number' placeholder='answer' style='margin-left:2%; margin-right:2%; margin-top:2%'>";
-        echo "<br>";
+        echo "\t\t\t\t\t\t<input type='text' class='form-control' name='q$number' placeholder='answer' style='margin-left:2%; margin-right:2%; margin-top:2%'>\n";
+        echo "\t\t\t\t\t\t<br>\n";
     }
 
     //the function returns const of the question string
     function addQuestionString($question)
     {
-        echo "<h4 class='display-5' style='margin:2%'>$question</h4>";
+        echo "\t\t\t\t\t\t<h4 class='display-5' style='margin:2%'>";
+        echo htmlspecialchars($question, ENT_QUOTES, 'UTF-8');
+        echo "</h4>\n";
     }
     
     //the function is returning the parameters as an array
@@ -41,12 +43,21 @@
     {
         for($i = 1; $i <= $optionNumber; $i++)
         {
-            echo "<div class='input-group input-group-lg pb-2' style='flex-wrap:nowrap'>";
-            echo "<input type='Radio' class='form-control' placeholder='answer' id='r$number,$i' name='radioQestion' width='50px' height='50px'";
-            echo "style='margin-left:2%; margin-right:2%; width:3%; height:5%'>";
+            echo "\t\t\t\t\t\t<div class='input-group input-group-lg pb-2' style='flex-wrap:nowrap'>\n";
             $index = $i - 1;
-            echo "<lable for='r$number,$i' style='width: 97%; line-height: 175%'>$arrayOfOptions[$index]</lable>";
-            echo "</div>";
+            if($i == 1)
+            {
+                echo "\t\t\t\t\t\t<input type='Radio' class='form-control' placeholder='answer' value='".htmlspecialchars($arrayOfOptions[$index], ENT_QUOTES, 'UTF-8')."' id='r$number,$i' name='q$number"."radioQuestion' width='50px' height='50px' checked";
+            }
+            else
+            {
+                echo "\t\t\t\t\t\t<input type='Radio' class='form-control' placeholder='answer' value='".htmlspecialchars($arrayOfOptions[$index], ENT_QUOTES, 'UTF-8')."' id='r$number,$i' name='q$number"."radioQuestion' width='50px' height='50px'";
+            }
+            echo "\t\t\t\t\t\tstyle='margin-left:2%; margin-right:2%; width:3%; height:5%'>\n";
+            echo "\t\t\t\t\t\t<lable for='r$number,$i' style='width: 97%; line-height: 175%'>\n\t\t\t\t\t\t";
+            echo htmlspecialchars($arrayOfOptions[$index], ENT_QUOTES, 'UTF-8');
+            echo "\t\t\t\t\t\t</lable>\n";
+            echo "\t\t\t\t\t\t</div>\n";
         }
     }
 
@@ -55,19 +66,28 @@
     {
         for($i = 1; $i <= $optionNumber; $i++)
         {
-            echo "<div class='input-group input-group-lg pb-2' style='flex-wrap:nowrap'>";
-            echo "<input type='checkbox' class='form-control' placeholder='answer' id='c$number,$i' name='radioQestion' width='50px' height='50px'";
-            echo "style='margin-left:2%; margin-right:2%; width:3%; height:5%'>";
+            echo "\t\t\t\t\t\t<div class='input-group input-group-lg pb-2' style='flex-wrap:nowrap'>\n";
             $index = $i - 1;
-            echo "<lable for='c$number,$i' style='width: 97%; line-height: 175%'>$arrayOfOptions[$index]</lable>";
-            echo "</div>";
+            if($i == 1)
+            {
+                echo "\t\t\t\t\t\t<input type='checkbox' class='form-control' placeholder='answer' value='".htmlspecialchars($arrayOfOptions[$index], ENT_QUOTES, 'UTF-8')."' id='c$number,$i' name='q$number"."checkboxQuestion[]' width='50px' checked height='50px'\n";
+            }
+            else
+            {
+                echo "\t\t\t\t\t\t<input type='checkbox' class='form-control' placeholder='answer' value='".htmlspecialchars($arrayOfOptions[$index], ENT_QUOTES, 'UTF-8')."' id='c$number,$i' name='q$number"."checkboxQuestion[]' width='50px' height='50px'\n";
+            }
+            echo "\t\t\t\t\t\tstyle='margin-left:2%; margin-right:2%; width:3%; height:5%'>\n";
+            echo "\t\t\t\t\t\t<lable for='c$number,$i' style='width: 97%; line-height: 175%'>\n\t\t\t\t\t\t";
+            echo htmlspecialchars($arrayOfOptions[$index], ENT_QUOTES, 'UTF-8');
+            echo "\t\t\t\t\t\t</lable>\n";
+            echo "\t\t\t\t\t\t</div>\n";
         }
     }
 
     //the function is adding a submit button to the form
     function addSubmitButton()
     {
-        echo '<center> <input type="submit" style="margin:2%" value="Submit Answers" class="btn btn-primary btn-lg"> </center';
+        echo "\t\t\t\t\t\t<center> <input type=\"submit\" style=\"margin:2%\" value=\"Submit Answers\" class=\"btn btn-primary btn-lg\"> </center>\n";
     }
 
     //the main function

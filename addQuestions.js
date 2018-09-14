@@ -102,4 +102,6 @@ function addRadioOrCheckBox(checkboxOrRadio) {
     addQuest += closeDivs(3);
     document.getElementById("TheBody").insertAdjacentHTML('beforeend', addQuest);
 
+    qId++;
+
 }

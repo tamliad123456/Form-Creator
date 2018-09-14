@@ -1,3 +1,8 @@
+<!-- TODO
+    statistics (only owners)
+    answering (non logged users)
+-->
+
 <html id = "html">
     <head>
         <title>Menu</title>

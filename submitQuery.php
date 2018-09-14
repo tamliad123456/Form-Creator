@@ -10,9 +10,6 @@
 <body id = "TheBody">
 
     <?php
-        ini_set("log_errors", 1);
-        ini_set("error_log", "/tmp/php-error.log");
-        error_log( "Hello, errors!" );
         $i = 1;
         
         $questionArr = array();
@@ -75,13 +72,13 @@
         function parseParams($number)
         {
             $i = 2;
-            $string = $_POST["{$number}&&option1"];
+            $string = $_POST["$number&&option1"];
             do
             {
-                $string = "{$string}&&";
-                $string =  $string. $_POST[$number."&&option$i"];
+                $string = "$string&&";
+                $string =  $string. $_POST["$number&&option$i"];
                 $i++;
-            }while(isset($_POST["{$number}&&option{$i}"]));
+            }while(isset($_POST["$number&&option$i"]));
             return $string;
         }
 
@@ -98,7 +95,7 @@
             $statement->bindValue(5, $arr["GUID"]);
 
             $statement->execute();
-            
+            $db->close();
 
         }
 
