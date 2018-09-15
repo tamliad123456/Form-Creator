@@ -11,7 +11,8 @@
 
     <body id = "TheBody">
         <div class="row justify-content-center">
-            <div class="col-xl-6 col-lg-7 col-md-9">
+            <?php include "back.php"; ?>
+            <div class="col-xl-6 col-lg-7 col-md-9" style="margin-right: 8%">
                 <div class="card shadow-lg">
                     <div class="card-body p-4 p-md-5">
 
@@ -34,8 +35,9 @@
 
         if(count($guidsArr) < 1 || $guidsArr[0] == "")
         {
-            echo "<h1>You dont have any forms at all!!<br> here is a meme:</h1>";
-            echo "<img src =\"https://o.aolcdn.com/images/dims?quality=100&image_uri=http%3A%2F%2Fo.aolcdn.com%2Fhss%2Fstorage%2Fmidas%2F9177f1bff2326923725e0ed737583830%2F201851840%2Fputinmeme02.jpg&client=amp-blogside-v2&signature=2db82d820402a90ec78b04a70752172afbb38739\">\n";
+            echo "<center><h1>You dont have any forms at all!!<br> here is a meme:</h1>";
+            echo "<img src =\"https://o.aolcdn.com/images/dims?quality=100&image_uri=http%3A%2F%2Fo.aolcdn.com%2Fhss%2Fstorage%2Fmidas%2F9177f1bff2326923725e0ed737583830%2F201851840%2Fputinmeme02.jpg&client=amp-blogside-v2&signature=2db82d820402a90ec78b04a70752172afbb38739\" style=\"max-width: 100%; max-height: 100%; height: auto; width:auto;\">
+            <center>\n";
         }
 
         function getUserForms($db)

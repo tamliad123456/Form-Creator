@@ -54,9 +54,9 @@
                 echo "\t\t\t\t\t\t<input type='Radio' class='form-control' placeholder='answer' value='".htmlspecialchars($arrayOfOptions[$index], ENT_QUOTES, 'UTF-8')."' id='r$number,$i' name='q$number"."radioQuestion' width='50px' height='50px'";
             }
             echo "\t\t\t\t\t\tstyle='margin-left:2%; margin-right:2%; width:3%; height:5%'>\n";
-            echo "\t\t\t\t\t\t<lable for='r$number,$i' style='width: 97%; line-height: 175%'>\n\t\t\t\t\t\t";
+            echo "\t\t\t\t\t\t<h5 for='r$number,$i' style='width: 97%; line-height: 175%'>\n\t\t\t\t\t\t";
             echo htmlspecialchars($arrayOfOptions[$index], ENT_QUOTES, 'UTF-8');
-            echo "\t\t\t\t\t\t</lable>\n";
+            echo "\t\t\t\t\t\t</h5>\n";
             echo "\t\t\t\t\t\t</div>\n";
         }
     }
@@ -77,9 +77,9 @@
                 echo "\t\t\t\t\t\t<input type='checkbox' class='form-control' placeholder='answer' value='".htmlspecialchars($arrayOfOptions[$index], ENT_QUOTES, 'UTF-8')."' id='c$number,$i' name='q$number"."checkboxQuestion[]' width='50px' height='50px'\n";
             }
             echo "\t\t\t\t\t\tstyle='margin-left:2%; margin-right:2%; width:3%; height:5%'>\n";
-            echo "\t\t\t\t\t\t<lable for='c$number,$i' style='width: 97%; line-height: 175%'>\n\t\t\t\t\t\t";
+            echo "\t\t\t\t\t\t<h5 for='c$number,$i' style='width: 97%; line-height: 175%'>\n\t\t\t\t\t\t";
             echo htmlspecialchars($arrayOfOptions[$index], ENT_QUOTES, 'UTF-8');
-            echo "\t\t\t\t\t\t</lable>\n";
+            echo "\t\t\t\t\t\t</h5>\n";
             echo "\t\t\t\t\t\t</div>\n";
         }
     }

@@ -75,8 +75,8 @@ body {
   line-height: 1.5;
   color: #1e2022;
   text-align: left;
-  background-color: #3f4b5d;
-  /*background-image: url("background.jpeg");*/
+  background-color: #FFF;
+  \\background-image: url("background.jpeg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: auto;
@@ -90,11 +90,6 @@ hr {
   box-sizing: content-box;
   height: 0;
   overflow: visible;
-}
-
-.lable
-{
-  color: #fff;
 }
 
 h1,
@@ -405,37 +400,31 @@ h6,
 h1,
 .h1 {
   font-size: 2.5rem;
-  color: #fff;
 }
 
 h2,
 .h2 {
   font-size: 2rem;
-  color: #fff;
 }
 
 h3,
 .h3 {
   font-size: 1.75rem;
-  color: #fff;
 }
 
 h4,
 .h4 {
   font-size: 1.5rem;
-  color: #fff;
 }
 
 h5,
 .h5 {
   font-size: 1.25rem;
-  color: #fff;
 }
 
 h6,
 .h6 {
   font-size: 1rem;
-  color: #fff;
 }
 
 .lead {
@@ -2231,7 +2220,6 @@ textarea.form-control {
 .form-text {
   display: block;
   margin-top: 0.25rem;
-  border-radius: :3
 }
 
 .form-row {
@@ -3288,7 +3276,7 @@ fieldset:disabled a.btn {
   padding: 1.125rem 1.125rem;
   font-size: 1rem;
   line-height: 1.5;
-  border-radius: 30px;
+  border-radius: 0.3rem;
 }
 
 .btn-sm,
@@ -3750,10 +3738,8 @@ input[type="button"].btn-block {
 
 .input-group>.form-control:not(:first-child),
 .input-group>.custom-select:not(:first-child) {
-  border-top-left-radius: 30px;
-  border-bottom-left-radius: 30px;
-  border-top-right-radius: 30px;
-  border-bottom-right-radius: 30px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 .input-group>.custom-file {
@@ -4812,15 +4798,11 @@ input[type="button"].btn-block {
   -ms-flex-direction: column;
   flex-direction: column;
   min-width: 0;
-  margin-top: 5%;
-  margin-bottom: 5%;
   word-wrap: break-word;
-  background-color: #1f242c;
+  background-color: #fff;
   background-clip: border-box;
-  border-radius: 30px;
-
-  /*border: 1px solid #e7eaf3;
-  border-radius: 0.25rem;*/
+  border: 1px solid #e7eaf3;
+  border-radius: 0.25rem;
 }
 
 .card>hr {
@@ -4868,7 +4850,7 @@ input[type="button"].btn-block {
 .card-header {
   padding: 1rem 1rem;
   margin-bottom: 0;
-  background-color: #000;
+  background-color: #fff;
   border-bottom: 1px solid #e7eaf3;
 }
 
@@ -8078,7 +8060,7 @@ button.bg-dark:focus {
 }
 
 .shadow-lg {
-  //box-shadow: 0 10px 40px 10px rgba(255, 255, 255, 0.175) !important;
+  box-shadow: 0 10px 40px 10px rgba(140, 152, 164, 0.175) !important;
 }
 
 .shadow-none {

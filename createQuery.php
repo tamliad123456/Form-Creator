@@ -1,4 +1,4 @@
-<?php include 'checkLogin.php'; ?>
+<?php include 'checkLogin.php';?>
 <html id = "html">
     <head>
                 <title>create a query</title>
@@ -29,7 +29,28 @@
 
         if(($username != "" && $password != ""))
         {
-            echo file_get_contents("createQuery.htm");
+            echo '<div class="row justify-content-center">';
+            include "back.php";
+            echo '<div class="col-xl-6 col-lg-7 col-md-9" style="margin-right:8%">
+                <div class="card shadow-lg">
+                    <div class="card-body p-4 p-md-5" >
+                        <center>
+                            <h1>welcome to form creation</h1>
+                            <br>
+                            <input type="button" onclick="addQuestion()" style="margin:2%" value="Add Question" class="btn btn-primary btn-lg">
+                            <input type="button" onclick="addRadioOrCheckBox("radio")" style="margin:2%" value="Add Radio"
+                                class="btn btn-primary btn-lg">
+                            <input type="button" onclick="addRadioOrCheckBox("checkbox")" style="margin:2%" value="Add CheckBox"
+                                class="btn btn-primary btn-lg">
+        
+                        </center>
+                        <center>
+                            <input type="submit" style="margin:2%" value="Submit Questions" class="btn btn-primary btn-lg">
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>';
         }
 
         else

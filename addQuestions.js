@@ -2,9 +2,9 @@ var qId = 1
 
 function getCardWithId() {
     //const
-    var card = '<div class="row justify-content-center" id = "q' + qId.toString() + '" style="margin:2%">\
+    var card = '<div class="row justify-content-center" id = "q' + qId.toString() + '">\
     <div class="col-xl-6 col-lg-7 col-md-9"> \
-    <div class="card shadow-lg" id="card" style="padding:2%"> \
+    <div class="card shadow-lg" id="card" style="padding:2%;margin-top:1%"> \
     <div class="input-group input-group-lg pb-2">'
     return card;
 }
