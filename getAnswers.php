@@ -49,7 +49,7 @@
             }
             else
             {
-                echo '<script> window.location.href = "index.htm"; </script>';
+                header('Location: '."index.htm");
             }
             
             $getQuery = "SELECT guid FROM _users WHERE uName=? AND uPass=?";

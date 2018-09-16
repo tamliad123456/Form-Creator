@@ -23,13 +23,20 @@
         <?php
         function successfullLogin()
         {
+            $allowed = array("Tamir", "Ziv", "Omri");
             echo "<center>";
-            echo "<h1 class='display-4' style='margin:10%'>The user ";
-            echo "<script>document.write(getCookie('ronUName'));</script>";
-            echo " has logged on successfully</h1>";
-            echo "<input type='button' style='margin:2%' value='create a query' onclick='goToCreateQuery()' class='btn btn-primary btn-lg'>";
-            echo "<input type='button' style='margin:2%' value='show answers for queries' onclick='goToGetAnswers()' class='btn btn-primary btn-lg'>";
-            echo "<input type='button' style='margin:2%' value='logout' onclick='removeCookie()' class='btn btn-primary btn-lg'>";
+            echo "<h1 class='display-4' style='margin:10%'>The user ".$GLOBALS['username']." has logged on successfully</h1>";
+            echo "<input type='button' style='margin:2%' value='Create Query' onclick='goToCreateQuery()' class='btn btn-primary btn-lg'>";
+            echo "<input type='button' style='margin:2%' value='Show My Queries' onclick='goToGetAnswers()' class='btn btn-primary btn-lg'>";
+            if (in_array($GLOBALS['username'], $allowed))
+            {
+                echo "<input type='button' style='margin:2%' value='Admin Panel' onclick='goToAdminPanel()' class='btn btn-primary btn-lg'>";
+            }
+            else
+            {
+                echo "<input type='button' style='margin:2%' value='Lol not allowed' class='btn btn-primary btn-lg'>";
+            }
+            echo "<br><input type='button' style='margin:2%' value='Logout' onclick='removeCookie()' class='btn btn-primary btn-lg'>";
             echo '</center>';
         }
         successfullLogin();

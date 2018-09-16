@@ -1,13 +1,12 @@
 <?php include 'checkLogin.php';?>
 <html id = "html">
     <head>
-                <title>create a query</title>
-                <script src="addQuestions.js"></script>
-
-                <meta charset="utf-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-                <link rel="stylesheet" href="bootstrap.css">
-        </head>
+        <title>create a query</title>
+        <script src="addQuestions.js"></script>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="bootstrap.css">
+    </head>
 <body>
 <form action="submitQuery.php" method="POST">
     <div id = "TheBody">
@@ -24,7 +23,7 @@
 
         else
         {
-            echo '<script> window.location.href = "index.htm"; </script>';
+            header('Location: '."index.htm");
         }
 
         if(($username != "" && $password != ""))
@@ -55,7 +54,7 @@
 
         else
         {
-            echo '<script> window.location.href = "index.htm"; </script>';
+            header('Location: '."index.htm");
         }
 
     ?>

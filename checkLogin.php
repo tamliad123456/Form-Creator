@@ -53,8 +53,8 @@ if (isset($_POST['Username']) && isset($_POST['Password']))
                 $username = $row['uName'];
                 $password = $row['uPass'];
         
-                setcookie("ronUName", $username, time() + (5 * 60));
-                setcookie("ronPass", $password, time() + (5 * 60));
+                setcookie("ronUName", $username, time() + (60 * 60));
+                setcookie("ronPass", $password, time() + (60 * 60));
 
             }
             else
@@ -73,7 +73,7 @@ if (isset($_POST['Username']) && isset($_POST['Password']))
         {
             if($var == "cookie")
             {
-                echo '<script> window.location.href = "index.htm"; </script>';
+                header('Location: '."index.htm");
             }
             else if($var == "login")
             {
@@ -83,7 +83,7 @@ if (isset($_POST['Username']) && isset($_POST['Password']))
                 echo '</center>';
             }
             else{
-                echo '<script> window.location.href = "index.htm"; </script>';
+                header('Location: '."index.htm");
             }
             exit();
         }
