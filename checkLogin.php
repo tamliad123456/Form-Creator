@@ -12,6 +12,7 @@ if (isset($_POST['Username']) && isset($_POST['Password']))
             }
 
             $db = new SQLite3('database.db');
+            
             $stmt = $db->prepare('SELECT uName, uPass FROM _users WHERE uName=? AND uPass=?');
             $stmt->bindValue(1, $username, SQLITE3_TEXT);
             $stmt->bindValue(2, $password, SQLITE3_TEXT);

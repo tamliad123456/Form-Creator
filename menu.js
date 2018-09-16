@@ -7,13 +7,16 @@ function goToGetAnswers() {
     window.location.href = "getAnswers.php";
 }
 
-function loginWithCookie() {
+function loginWithCookie(check = 'notAdmin') {
     var loginUname = getCookie("ronUName");
     var loginPass = getCookie("ronPass");
 
     if(loginPass != "" && loginUname != "")
     {
-        postToMenu(loginUname, loginPass);
+        if(check != 'Admin')
+        {
+            postToMenu(loginUname, loginPass);
+        }
     }
 }
 
@@ -94,4 +97,10 @@ function removeQuery(guid) {
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("guid=" + guid);
 
+}
+
+
+function goToAdminPanel()
+{
+    window.location.href = "adminCmds/adminPanel.php";
 }
