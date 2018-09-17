@@ -76,10 +76,18 @@ function addRadioOrCheckBox(checkboxOrRadio) {
         options = prompt("enter number of options: ");
         if(options == "" || isNaN(options))
         {
-            alert("please insert only a number");
+            alert("Please insert only a number");
+        }
+        else if(!options)
+        {
+            return;
+        }
+        else if(options < 2)
+        {
+            alert("Please insert numbers greater than 1.");
         }
     }
-    while (options == "" || isNaN(options));
+    while (options == "" || isNaN(options) || options < 2);
 
     var addQuest;
     addQuest = getCardWithId(qId);

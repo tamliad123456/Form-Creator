@@ -1,4 +1,4 @@
-<?php include "AdminCheckForLogin.php";
+<?php include "checkLogin.php";
     $allowed = array("Tamir", "Ziv", "Omri");
     if (!in_array($GLOBALS['username'], $allowed))
     {
@@ -12,8 +12,8 @@
         <title>Admin Panel</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="../bootstrap.css">
-        <script src="../menu.js"></script>
+        <link rel="stylesheet" href="bootstrap.css">
+        <script src="menu.js"></script>
         <script src="Admin.js"></script>
 
 
@@ -27,7 +27,7 @@
                 <h1>Users List:</h1></center>
                 <table>
                 <?php
-                $db = new SQLite3('../database.db');
+                $db = new SQLite3('database.db');
                 $stmt = $db->prepare('SELECT uName, ban FROM _users');
                 $result = $stmt->execute();
                 

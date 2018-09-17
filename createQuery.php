@@ -29,8 +29,7 @@
         if(($username != "" && $password != ""))
         {
             echo '<div class="row justify-content-center">';
-            include "back.php";
-            echo '<div class="col-xl-6 col-lg-7 col-md-9" style="margin-right:8%">
+            echo '<div class="col-xl-6 col-lg-7 col-md-9">
                 <div class="card shadow-lg">
                     <div class="card-body p-4 p-md-5" >
                         <center>

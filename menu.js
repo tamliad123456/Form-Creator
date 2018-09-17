@@ -102,5 +102,5 @@ function removeQuery(guid) {
 
 function goToAdminPanel()
 {
-    window.location.href = "adminCmds/adminPanel.php";
+    window.location.href = "adminPanel.php";
 }

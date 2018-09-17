@@ -11,8 +11,7 @@
 
     <body id = "TheBody">
         <div class="row justify-content-center">
-            <?php include "back.php"; ?>
-            <div class="col-xl-6 col-lg-7 col-md-9" style="margin-right: 8%">
+            <div class="col-xl-6 col-lg-7 col-md-9">
                 <div class="card shadow-lg">
                     <div class="card-body p-4 p-md-5">
 
@@ -27,7 +26,7 @@
 
         for($i = 0; $i < count($guidsArr) && $guidsArr[0] != ""; $i++)
         {  
-            echo "<a href='answerQuery.php?id=$guidsArr[$i]'>Form $i </a>";
+            echo "<a href='showStats.php?guid=$guidsArr[$i]'>Form $i </a>";
             echo getRemoveBtn($guidsArr[$i]);
             echo "<br>";
         }
