@@ -7,8 +7,8 @@ main();
 function main()
 {
     $thisGuid = $_POST['guid'];
-    $username = $_COOKIE["ronUName"];
-    $password = $_COOKIE["ronPass"];
+    $username = $_SESSION["username"];
+    $password = $_SESSION["password"];
     $db = new SQLITE3("database.db");
 
     $guidsArr = getUserForms($db);
@@ -36,8 +36,8 @@ function main()
 
 function getUserForms($db)
 {
-    $username = $_COOKIE["ronUName"];
-    $password = $_COOKIE["ronPass"];
+    $username = $_SESSION["username"];
+    $password = $_SESSION["password"];
     
     $getQuery = "SELECT guid FROM _users WHERE uName=? AND uPass=?";
     $statement = $db->prepare($getQuery);

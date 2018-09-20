@@ -41,10 +41,10 @@
 
         function getUserForms($db)
         {
-            if (isset($_COOKIE["ronUName"]) && isset($_COOKIE["ronPass"]))
+            if (isset($_SESSION["username"]) && isset($_SESSION["password"]))
             {
-                $username = $_COOKIE["ronUName"];
-                $password = $_COOKIE["ronPass"];
+                $username = $_SESSION["username"];
+                $password = $_SESSION["password"];
             }
             else
             {

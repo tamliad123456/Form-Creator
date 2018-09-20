@@ -31,13 +31,13 @@
         $db = new SQLite3("database.db");
         $selectString = "SELECT uName, uPass FROM _users WHERE uName=? AND uPass=?";
         $statement = $db->prepare($selectString);
-        $statement->bindValue(1, $GLOBALS['username']);
+        $statement->bindValue(1, $_SESSION['username']);
         $statement->bindValue(2, $pass);
         
         $result = $statement->execute();
         $row = $result->fetchArray(SQLITE3_ASSOC);
         
-        if($row['uName'] == $GLOBALS['username'] && $row['uPass'] == $pass)
+        if($row['uName'] == $_SESSION['username'] && $row['uPass'] == $pass)
         {
             $uname = $_POST["uName"];
             $deleteString = "DELETE FROM _users WHERE uName=?";

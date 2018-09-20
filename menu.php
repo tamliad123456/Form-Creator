@@ -19,16 +19,16 @@
                     <div class="card shadow-lg">
                         <div class="card-body p-4 p-md-5">
 
-        <?php include 'checkLogin.php';?>
         <?php
+        include 'checkLogin.php';
         function successfullLogin()
         {
             $allowed = array("Tamir", "Ziv", "Omri");
             echo "<center>";
-            echo "<h1 class='display-4' style='margin:10%'>The user ".$GLOBALS['username']." has logged on successfully</h1>";
+            echo "<h1 class='display-4' style='margin:10%'>The user ".$_SESSION['username']." has logged on successfully</h1>";
             echo "<input type='button' style='margin:2%' value='Create Query' onclick='goToCreateQuery()' class='btn btn-primary btn-lg'>";
             echo "<input type='button' style='margin:2%' value='Show My Queries' onclick='goToGetAnswers()' class='btn btn-primary btn-lg'>";
-            if (in_array($GLOBALS['username'], $allowed))
+            if (in_array($_SESSION['username'], $allowed))
             {
                 echo "<input type='button' style='margin:2%' value='Admin Panel' onclick='goToAdminPanel()' class='btn btn-primary btn-lg'>";
             }

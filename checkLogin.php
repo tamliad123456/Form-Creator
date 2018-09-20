@@ -1,74 +1,70 @@
 <?php
-if (isset($_POST['Username']) && isset($_POST['Password']))
-        {
-            $username = $_POST['Username'];
-            if(!isset($_POST['alreadyHashed']))
-            {
-                $password = hash("sha256", $_POST['Password']);
-            }
-            else
-            {
-                $password = $_POST['Password'];
-            }
+session_start();
 
-            $db = new SQLite3('database.db');
+if(isset($_POST['Username']) && isset($_POST['Password']))
+{
+    $username = $_POST['Username'];
+    if(!isset($_POST['alreadyHashed']))
+    {
+        $password = hash("sha256", $_POST['Password']);
+    }
+    else
+    {
+        $password = $_POST['Password'];
+    }
+
+    $db = new SQLite3('database.db');
             
-            $stmt = $db->prepare('SELECT uName, uPass FROM _users WHERE uName=? AND uPass=?');
-            $stmt->bindValue(1, $username, SQLITE3_TEXT);
-            $stmt->bindValue(2, $password, SQLITE3_TEXT);
+    $stmt = $db->prepare('SELECT uName, uPass FROM _users WHERE uName=? AND uPass=?');
+    $stmt->bindValue(1, $username, SQLITE3_TEXT);
+    $stmt->bindValue(2, $password, SQLITE3_TEXT);
 
-            $result = $stmt->execute();
+    $result = $stmt->execute();
 
-            $row = $result->fetchArray(SQLITE3_ASSOC);
+    $row = $result->fetchArray(SQLITE3_ASSOC);
+    
+    if($row["uName"] ==  $username && $row["uPass"] == $password)
+    {
+        $_SESSION["username"] = $row['uName'];
+        $_SESSION["password"] = $row['uPass'];
+        setcookie("connected", hash("sha256", $row['uName'].$row['uPass']));
+        header("Location: menu.php");
+    }
+    else
+    {
+        failedLogin("login");
+    }
+    $db->close();
 
-            if($row["uName"] ==  $username && $row["uPass"] == $password)
-            {
-                $username = $row['uName'];
-                $password = $row['uPass'];
+}
+else if(isset($_COOKIE['connected']))
+{
+    if(isset($_SESSION["username"]) && isset($_SESSION["password"]))
+    {
+        $db = new SQLite3('database.db');
+        $stmt = $db->prepare('SELECT uName, uPass FROM _users WHERE uName=? AND uPass=?');
+        $stmt->bindValue(1, $_SESSION["username"], SQLITE3_TEXT);
+        $stmt->bindValue(2, $_SESSION["password"], SQLITE3_TEXT);
+
+        $result = $stmt->execute();
+        $row = $result->fetchArray(SQLITE3_ASSOC);
         
-                setcookie("ronUName", $username, time() + (5));
-                setcookie("ronPass", $password, time() + (5));
-            }
-            else
-            {
-                failedLogin("login");
-            }
-            $db->close();
-        }
-        else if (isset($_COOKIE['ronUName']) && isset($_COOKIE['ronPass']))
+        
+        if($row["uName"] ==  $_SESSION["username"] && $_SESSION["password"] == $row["uPass"])
         {
-            $username = $_COOKIE['ronUName'];
-            $password = $_COOKIE['ronPass'];
-
-            $db = new SQLite3('database.db');
-            $stmt = $db->prepare('SELECT uName, uPass FROM _users WHERE uName=? AND uPass=?');
-            $stmt->bindValue(1, $username, SQLITE3_TEXT);
-            $stmt->bindValue(2, $password, SQLITE3_TEXT);
-
-            $result = $stmt->execute();
-
-            $row = $result->fetchArray(SQLITE3_ASSOC);
-
-            if($row["uName"] ==  $username && $row["uPass"] == $password)
-            {
-                $username = $row['uName'];
-                $password = $row['uPass'];
-        
-                setcookie("ronUName", $username, time() + (60 * 60));
-                setcookie("ronPass", $password, time() + (60 * 60));
-
-            }
-            else
-            {
-                failedLogin("cookie");
-            }
-            $db->close();
+            
+            setcookie("connected", hash("sha256", $row['uName'].$row['uPass']));
         }
         else
         {
-            failedLogin();
+            failedLogin("cookie");
         }
-        
+        $db->close();
+    }
+    else{
+        failedLogin("cookie");
+    }
+}
 
         function failedLogin($var = "hello")
         {

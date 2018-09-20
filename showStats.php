@@ -8,14 +8,14 @@ function checkIfAllowed()
     
     $insertString = "SELECT guid FROM _users where uName=? AND uPass=?";
     $statement = $db->prepare($insertString);
-    $statement->bindValue(1, $GLOBALS["username"]);
-    $statement->bindValue(2, $GLOBALS["password"]);
+    $statement->bindValue(1, $_SESSION["username"]);
+    $statement->bindValue(2, $_SESSION["password"]);
     $result = $statement->execute();
     $row = $result->fetchArray(SQLITE3_ASSOC)["guid"];
     $guidsArr = explode("&&", $row);
         
     $allowed = array("Tamir", "Ziv", "Omri");
-    if (!in_array($GLOBALS['username'], $allowed) && !in_array($_GET["guid"], $guidsArr))
+    if (!in_array($_SESSION['username'], $allowed) && !in_array($_GET["guid"], $guidsArr))
     {
         header('Location: '."menu.php");
         exit();
@@ -96,7 +96,7 @@ function checkIfAllowed()
                         $arr = array();
                         $i = 0;
                         $db = new SQLite3("database.db");
-                        $selectString = "SELECT * FROM _answers3 WHERE formGUID=? AND qNum=?";
+                        $selectString = "SELECT * FROM _answers WHERE formGUID=? AND qNum=?";
                         $statement = $db->prepare($selectString);
                         $statement->bindValue(1, $_GET["guid"]);
                         $statement->bindValue(2, $number);

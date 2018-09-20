@@ -60,8 +60,8 @@
         {
             $statement->bindValue(1, "$GUID");
         }
-        $statement->bindValue(2, $_COOKIE["ronUName"]);
-        $statement->bindValue(3, $_COOKIE["ronPass"]);
+        $statement->bindValue(2, $_SESSION["username"]);
+        $statement->bindValue(3, $_SESSION["password"]);
 
         $result = $statement->execute();
         $db->close();
@@ -101,8 +101,8 @@
 
         function getUserForms($db)
         {
-            $username = $_COOKIE["ronUName"];
-            $password = $_COOKIE["ronPass"];
+            $username = $_SESSION["username"];
+            $password = $_SESSION["password"];
             
             $getQuery = "SELECT guid FROM _users WHERE uName=? AND uPass=?";
             $statement = $db->prepare($getQuery);

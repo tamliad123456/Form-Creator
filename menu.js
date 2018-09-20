@@ -7,24 +7,21 @@ function goToGetAnswers() {
     window.location.href = "getAnswers.php";
 }
 
-function loginWithCookie(check = 'notAdmin') {
-    var loginUname = getCookie("ronUName");
-    var loginPass = getCookie("ronPass");
 
-    if(loginPass != "" && loginUname != "")
+function loginWithCookie(check = 'notAdmin') {
+
+    if(getCookie("connected") != "" && check != 'Admin')
     {
-        if(check != 'Admin')
-        {
-            postToMenu(loginUname, loginPass);
-        }
+        window.location.href = "menu.php";
     }
+
 }
 
 
 function removeCookie()
 {
-    deleteCookie("ronUName");
-    deleteCookie("ronPass");
+    deleteCookie("connected");
+    deleteCookie("PHPSESSID");
     window.location.href = "index.htm";
 }
 
@@ -36,37 +33,6 @@ function deleteCookie(cname) {
  
 }
 
-function postToMenu(Username, Password) {
-    method = "post";
-
-    var form = document.createElement("form");
-    form.setAttribute("method", method);
-    form.setAttribute("action", "menu.php");
-
-    var hiddenField = document.createElement("input");
-    hiddenField.setAttribute("type", "hidden");
-    hiddenField.setAttribute("name", "Username");
-    hiddenField.setAttribute("value", Username);
-
-    form.appendChild(hiddenField);
-
-    hiddenField = document.createElement("input");
-    hiddenField.setAttribute("type", "hidden");
-    hiddenField.setAttribute("name", "Password");
-    hiddenField.setAttribute("value", Password);
-
-    form.appendChild(hiddenField);
-
-    hiddenField = document.createElement("input");
-    hiddenField.setAttribute("type", "hidden");
-    hiddenField.setAttribute("name", "alreadyHashed");
-    hiddenField.setAttribute("value", "");
-
-    form.appendChild(hiddenField);
-
-    document.body.appendChild(form);
-    form.submit();
-}
 
 function getCookie(cname) {
     var name = cname + "=";
@@ -98,7 +64,6 @@ function removeQuery(guid) {
     xhttp.send("guid=" + guid);
 
 }
-
 
 function goToAdminPanel()
 {

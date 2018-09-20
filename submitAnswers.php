@@ -44,7 +44,7 @@
             
             function sendQuery($answerArr, $i)
             {            
-                $insertString = "INSERT INTO _answers3(answer, qnum, clientID, formGUID) VALUES(?,?,?,?)";
+                $insertString = "INSERT INTO _answers(answer, qnum, clientID, formGUID) VALUES(?,?,?,?)";
 
                 $db = new SQLite3("database.db");
                 $statement = $db->prepare($insertString);

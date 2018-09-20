@@ -1,6 +1,6 @@
 <?php include "checkLogin.php";
     $allowed = array("Tamir", "Ziv", "Omri");
-    if (!in_array($GLOBALS['username'], $allowed))
+    if (!in_array($_SESSION['username'], $allowed))
     {
         header('Location: '."menu.php");
         exit();
