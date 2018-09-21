@@ -1,11 +1,19 @@
 <?php
 include "checkLogin.php";
-$allowed = array("Tamir", "Ziv", "Omri");
+
+// check if you are conneected as admin
+$allowed = array(
+	"Tamir",
+	"Ziv",
+	"Omri"
+);
+
 if (!in_array($_SESSION['username'], $allowed))
-{
-    header('Location: '."menu.php");
-    exit();
-}
+	{
+	header('Location: ' . "menu.php");
+	exit();
+	}
+
 ?>
 
 <html>
@@ -26,16 +34,14 @@ if (!in_array($_SESSION['username'], $allowed))
                 <div class="card-body p-4 p-md-5">
                 <center>
                 <?php
-                echo "<h1>Edit The User ".htmlspecialchars($_GET["id"], ENT_QUOTES, 'UTF-8').":</h1></center>";
-                echo "</center>";
-                ?>
-                <center>
-                <?php
-                    echo "<input type='button' class='btn btn-primary btn-lg' value='Change Password' onclick='updatePassword(\"".htmlspecialchars($_GET["id"], ENT_QUOTES, 'UTF-8')."\")'>";
-                    echo "<input type='button' class='btn btn-primary btn-lg' value='Delete User'onclick='deleteUser(\"".htmlspecialchars($_GET["id"], ENT_QUOTES, 'UTF-8')."\")'>";
-                    echo "<input type='button' class='btn btn-primary btn-lg' value='See Forms' onclick='seeForms(\"".htmlspecialchars($_GET["id"], ENT_QUOTES, 'UTF-8')."\")'>";
-                    echo "<input type='button' class='btn btn-primary btn-lg' value='Ban' onclick='updateBan(\"".htmlspecialchars($_GET["id"], ENT_QUOTES, 'UTF-8')."\")'>";
-                ?>
+echo "<h1>Edit The User " . htmlspecialchars($_GET["id"], ENT_QUOTES, 'UTF-8') . ":</h1></center>";
+echo "</center>";
+echo "<center>";
+echo "<input type='button' class='btn btn-primary btn-lg' value='Change Password' onclick='updatePassword(\"" . htmlspecialchars($_GET["id"], ENT_QUOTES, 'UTF-8') . "\")'>";
+echo "<input type='button' class='btn btn-primary btn-lg' value='Delete User'onclick='deleteUser(\"" . htmlspecialchars($_GET["id"], ENT_QUOTES, 'UTF-8') . "\")'>";
+echo "<input type='button' class='btn btn-primary btn-lg' value='See Forms' onclick='seeForms(\"" . htmlspecialchars($_GET["id"], ENT_QUOTES, 'UTF-8') . "\")'>";
+echo "<input type='button' class='btn btn-primary btn-lg' value='Ban' onclick='updateBan(\"" . htmlspecialchars($_GET["id"], ENT_QUOTES, 'UTF-8') . "\")'>";
+?>
                 </center>   
                 <div id="lastDiv">
                 </div>

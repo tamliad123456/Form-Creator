@@ -82,12 +82,12 @@ function addRadioOrCheckBox(checkboxOrRadio) {
         {
             return;
         }
-        else if(options < 2)
+        else if(options < 2 || options > 6)
         {
-            alert("Please insert numbers greater than 1.");
+            alert("Please insert numbers greater than 1 and less that 6.");
         }
     }
-    while (options == "" || isNaN(options) || options < 2);
+    while (options == "" || isNaN(options) || options < 2 || options > 6);
 
     var addQuest;
     addQuest = getCardWithId(qId);

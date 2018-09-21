@@ -1,3 +1,9 @@
+/*
+the function is for posting to create new user
+input: none
+output: none
+*/
+
 function createUser()
 {
     var username = window.prompt("please enter new username: ");
@@ -17,6 +23,11 @@ function createUser()
     xhttp.send("type=create&uName=" + username + "&pass=" + hashedPass);
 }
 
+/*
+the function is for posting to update a user password
+input: username
+output: none
+*/
 function updatePassword(username)
 {
     var hashedPass = window.prompt("please enter the hashed password: (sha256).lower");
@@ -35,7 +46,12 @@ function updatePassword(username)
     xhttp.send("type=update&uName=" + username + "&pass=" + hashedPass);
 }
 
-function deleteUser(uid)
+/*
+the function is for posting to delete a user
+input: username
+output: none
+*/
+function deleteUser(username)
 {
     var pass = window.prompt("Please enter admin pass: ");
     var xhttp = new XMLHttpRequest();
@@ -52,9 +68,14 @@ function deleteUser(uid)
 
     xhttp.open("POST", "adminCmds.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("type=delete&uName=" + uid + "&pass=" + pass);
+    xhttp.send("type=delete&uName=" + username + "&pass=" + pass);
 }
 
+/*
+the function is for posting to get all the forms the user have
+input: username
+output: none
+*/
 function seeForms(username)
 {
     var xhttp = new XMLHttpRequest();
@@ -75,6 +96,11 @@ function seeForms(username)
     xhttp.send("type=seeForms&uName=" + username);
 }
 
+/*
+the function is for posting to update the ban level for the user
+input: username
+output: none
+*/
 function updateBan(username)
 {
     var ban = prompt("Enter ban level: ");

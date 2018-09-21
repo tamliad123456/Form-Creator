@@ -28,16 +28,17 @@
 
         if(($username != "" && $password != ""))
         {
-            echo '<div class="row justify-content-center">';
-            echo '<div class="col-xl-6 col-lg-7 col-md-9">
+            ?>
+            <div class="row justify-content-center">';
+            <div class="col-xl-6 col-lg-7 col-md-9">
                 <div class="card shadow-lg">
                     <div class="card-body p-4 p-md-5" >
                         <center>
                             <h1>welcome to form creation</h1>
                             <br>
                             <input type="button" onclick="addQuestion()" style="margin:2%" value="Add Question" class="btn btn-primary btn-lg">
-                            <input type="button" onclick="addRadioOrCheckBox(\'radio\')" style="margin:2%" value="Add Radio" class="btn btn-primary btn-lg"\>
-                            <input type="button" onclick="addRadioOrCheckBox(\'checkbox\')" style="margin:2%" value="Add CheckBox" class="btn btn-primary btn-lg">
+                            <input type="button" onclick="addRadioOrCheckBox('radio')" style="margin:2%" value="Add Radio" class="btn btn-primary btn-lg"\>
+                            <input type="button" onclick="addRadioOrCheckBox('checkbox')" style="margin:2%" value="Add CheckBox" class="btn btn-primary btn-lg">
                             
                         </center>
                         <center>
@@ -46,13 +47,15 @@
                     </div>
                 </div>
             </div>
-        </div>';
+        </div>
+        <?php
         }
 
         else
         {
             header('Location: '."index.htm");
         }
+        
 
     ?>
     </div>
