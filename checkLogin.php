@@ -99,19 +99,13 @@ function failedLogin($var)
 	exit();
 }
 
-//the main function
-function main()
+if (isset($_POST['Username']) && isset($_POST['Password']))
 {
-	if (isset($_POST['Username']) && isset($_POST['Password']))
-	{
-		checkWithPost();
-	}
-	else
-	if (isset($_COOKIE['connected']))
-	{
-		checkWithCookie();
-	}
+	checkWithPost();
 }
-
-main();
+else
+if (isset($_COOKIE['connected']))
+{
+	checkWithCookie();
+}
 ?>

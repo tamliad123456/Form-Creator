@@ -8,9 +8,11 @@
         <link rel="stylesheet" href="bootstrap.css">
     </head>
 <body>
+<iframe src="test.htm" style="width: 100%; height:6.5%" frameBorder="0"></iframe>
+
 <form action="submitQuery.php" method="POST">
     <div id = "TheBody">
-
+        
     <?php
         $username = "";
         $password = "";
