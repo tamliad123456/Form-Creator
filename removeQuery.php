@@ -30,6 +30,12 @@ function main()
         $statement->bindValue(1, $thisGuid);
         $statement->execute();
         echo 'deleted';
+
+        $updateQuery = "DELETE FROM _answers WHERE formGUID=?";
+        $statement = $db->prepare($updateQuery);
+        $statement->bindValue(1, $thisGuid);
+        $statement->execute();
+        echo 'deleted';
     }
     $db->close();
 }
