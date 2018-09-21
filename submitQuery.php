@@ -10,10 +10,11 @@
 <body id = "TheBody">
 
     <?php
+    
         $i = 1;
-        
         $questionArr = array();
         $GUID = uniqid();
+
         do
         {
             if(isset($_POST["q{$i}input"]))
@@ -67,6 +68,7 @@
         $db->close();
         header("Location: menu.php");
         exit;
+        
 
 
         function parseParams($number)
@@ -123,11 +125,6 @@
 
         }
 
-
-        function checkUnameAndPass()
-        {
-
-        }
     ?>
 
 </body>

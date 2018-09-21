@@ -6,11 +6,10 @@
         <link rel="stylesheet" href="bootstrap.css">
     </head>
     <body>
-        <?php
+        <?php include "checkLogin.php";
             $i = 1;
         
             $answerArr = array();
-            $clientGUID = uniqid();
             do
             {
                if(isset($_POST["q{$i}"]))
@@ -30,7 +29,6 @@
                    #PLACEHOLDER for banning
                }
                $answerArr["qnum"] = $i;
-               $answerArr["clientID"] = $clientGUID;
                $answerArr["formGUID"] = explode('id=', $_SERVER['HTTP_REFERER'])[1];
                $stringToInsert = sendQuery($answerArr, $i);
                $i++;
@@ -50,9 +48,8 @@
                 $statement = $db->prepare($insertString);
                 $statement->bindValue(1, $answerArr["answer"]);
                 $statement->bindValue(2, $answerArr["qnum"]);
-                $statement->bindValue(3, $answerArr["clientID"]);
+                $statement->bindValue(3, $_SESSION["username"]);
                 $statement->bindValue(4, $answerArr["formGUID"]);
-    
                 $statement->execute();
                 $db->close();
             }

@@ -115,7 +115,7 @@
         $guidsArr = explode("&&", $row);
         for($i = 0; $i < count($guidsArr) && $guidsArr[0] != ""; $i++)
         {  
-            echo "<a href='../answerQuery.php?id=".htmlspecialchars($guidsArr[$i], ENT_QUOTES, 'UTF-8')."'>Form $i </a>";
+            echo "<a href='showStats.php?guid=".htmlspecialchars($guidsArr[$i], ENT_QUOTES, 'UTF-8')."'>Form $i </a>";
             echo "<br>";
         }
     }

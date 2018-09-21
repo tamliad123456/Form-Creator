@@ -15,7 +15,7 @@
                             <h1 class="display-4" style="margin:10%">Please answer the Question</h1>
                         </center>
                         <form action="submitAnswers.php" method="POST">
-<?php
+<?php include "checkLogin.php";
     
     //the function is returning a question with type of input
     function addQuestion($number)

@@ -65,6 +65,7 @@ function checkIfAllowed()
                                 addTable($number, $arr);
                             }
                         }
+                        answerTable($arr);
                     }
 
                     function getNumOfQuestion()
@@ -132,72 +133,120 @@ function checkIfAllowed()
                     }
 
                     function addTable($number, $arr)
-                    {
-                        echo "<table border=1>";
+                    {   
                         $valueArr = getValues($number, $arr);
-                        
-                        for($i = 0; $i < count($valueArr); $i++)
+                        if(count($valueArr) > 0)
                         {
-                            echo "<tr>";
-                            echo "<td> <h3>". htmlspecialchars($valueArr[$i]["answer"], ENT_QUOTES, 'UTF-8')."</h3></td>";
-                            echo "</tr>";
+                            echo "<center>";
+                            echo "<table border=1>";
+                            
+                            for($i = 0; $i < count($valueArr); $i++)
+                            {
+                                echo "<tr>";
+                                echo "<td> <h3>". htmlspecialchars($valueArr[$i]["clientID"], ENT_QUOTES, 'UTF-8')."</h3></td>";
+                                echo "<td> <h3>". htmlspecialchars($valueArr[$i]["answer"], ENT_QUOTES, 'UTF-8')."</h3></td>";
+                                echo "</tr>";
+                            }
+                            echo "</table>";
+                            echo "</center>";
+                        }
+                        else{
+                            echo "<center><h4>no such answers to this question</h4></center>";
                         }
                         
                     }
-                    function echoQuestionArr($arr, $id)
-                    {
+
+                    function answerTable($QuestArr)
+                    {   
                         echo "<center>";
-                        echo '<canvas id="myChart'.$id.'" width="500" height="500"></canvas>';
-                        echo '<script>
-                        var ctx = document.getElementById("myChart'.$id.'").getContext("2d");
-                        var myChart = new Chart(ctx, {
-                            type: "pie",
-                            data: {
-                                labels:';
-                                echo ' [';
+                        echo "<h1> all the answers</h1>";
+                        echo "<table border=1>";
+                        for($number = 1; $number <= getNumOfQuestion(); $number++)
+                        {
+                            $arr = getValues($number, $QuestArr);
+                            if(count($arr) > 0)
+                            {
+                                for($i = 0; $i < count($arr); $i++)
+                                {
+                                    echo "<tr>
+                                    <td><h3>".$arr[$i]['clientID']."</h3></td>
+                                    <td><h3>".$arr[$i]['qnum']."</h3></td>
+                                    <td><h3>".$arr[$i]['answer']."</h3></td>
+                                    </tr>";
+                                }
+                            }
+                            else
+                            {
+                                echo "<tr><td><h4>no such answers to question number $number</h4></td></tr>";
+                            }
+                        }
+                        echo "</table>";
+                        echo "</center>";
+
+                    }
+
+
+
+                    function echoQuestionArr($arr, $id)
+                    {   
+                        if(count($arr) != 0)
+                        {
+                            echo "<center>";
+                            echo '<canvas id="myChart'.$id.'" width="500" height="500"></canvas>';
+                            echo '<script>
+                            var ctx = document.getElementById("myChart'.$id.'").getContext("2d");
+                            var myChart = new Chart(ctx, {
+                                type: "pie",
+                                data: {
+                                    labels:';
+                                    echo ' [';
+                                    foreach ($arr as $key => $value)
+                                    {
+                                        echo '"'.$key.'",';
+                                    }
+                            echo '],
+                            datasets: [{
+                                label: [';
                                 foreach ($arr as $key => $value)
                                 {
                                     echo '"'.$key.'",';
                                 }
-                        echo '],
-                        datasets: [{
-                            label: [';
-                            foreach ($arr as $key => $value)
-                            {
-                                echo '"'.$key.'",';
-                            }
+                                echo "],";
+                                echo "data: [";
+                                foreach($arr as $value)
+                                {
+                                    echo "$value,";
+                                }
                             echo "],";
-                            echo "data: [";
-                            foreach($arr as $value)
-                            {
-                                echo "$value,";
-                            }
-                        echo "],";
-                        echo "backgroundColor: [
-                                'rgba(255, 99, 132, 0.8)',
-                                'rgba(54, 162, 235, 0.8)',
-                                'rgba(255, 206, 86, 0.8)',
-                                'rgba(75, 192, 192, 0.8)',
-                                'rgba(153, 102, 255,0.8)',
-                                'rgba(255, 159, 64, 0.8)'
-                            ],
-                            
-                            borderWidth: 0.5
-                        }]
-                    },
-                            options: {
-                                scales: {
-                                    yAxes: [{
-                                        ticks: {
-                                            beginAtZero:true
-                                        }
-                                    }]
-                                },
-                                responsive: false
+                            echo "backgroundColor: [
+                                    'rgba(255, 99, 132, 0.8)',
+                                    'rgba(54, 162, 235, 0.8)',
+                                    'rgba(255, 206, 86, 0.8)',
+                                    'rgba(75, 192, 192, 0.8)',
+                                    'rgba(153, 102, 255,0.8)',
+                                    'rgba(255, 159, 64, 0.8)'
+                                ],
 
-                            }
-                        });
-                        </script>";
+                                borderWidth: 0.5
+                            }]
+                        },
+                                options: {
+                                    scales: {
+                                        yAxes: [{
+                                            ticks: {
+                                                beginAtZero:true
+                                            }
+                                        }]
+                                    },
+                                    responsive: false
+
+                                }
+                            });
+                            </script>";
+                        }
+                        else{
+                            echo "<center><h4>no such answers to this question</h4></center>";
+                        }
                     }
                     
                     main();
