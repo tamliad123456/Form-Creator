@@ -15,6 +15,14 @@ output: none
 function goToGetAnswers() {
     window.location.href = "getAnswers.php";
 }
+/*
+the function returnToMenu
+input: none
+output: none
+*/
+function returnToMenu() {
+    window.location.href = "menu.php";
+}
 
 /*
 the function is for redirecting to AdminPanel

@@ -2,12 +2,17 @@
 <html>
     <head>
         <title>Answer a query</title>
-        <script src="addQuestions.js"></script>
+		<script src="addQuestions.js"></script>
+		<script src="menu.js"></script>
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="bootstrap.css">
+		<link rel="stylesheet" href="bootstrap.css">
+
     </head>
     <body id = "TheBody">
+	<?php include "back.php";?>
+
         <div class="row justify-content-center">
             <div class="col-xl-6 col-lg-7 col-md-9">
                 <div class="card shadow-lg">

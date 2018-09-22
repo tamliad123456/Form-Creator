@@ -4,13 +4,12 @@ input: none
 output: none
 */
 
-function createUser()
-{
+function createUser() {
     var username = window.prompt("please enter new username: ");
     var hashedPass = window.prompt("please enter the hashed password: (sha256).lower");
 
     var xhttp = new XMLHttpRequest();
-    
+
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             alert(this.responseText);
@@ -28,12 +27,11 @@ the function is for posting to update a user password
 input: username
 output: none
 */
-function updatePassword(username)
-{
+function updatePassword(username) {
     var hashedPass = window.prompt("please enter the hashed password: (sha256).lower");
 
     var xhttp = new XMLHttpRequest();
-    
+
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             alert(this.responseText);
@@ -51,16 +49,14 @@ the function is for posting to delete a user
 input: username
 output: none
 */
-function deleteUser(username)
-{
+function deleteUser(username) {
     var pass = window.prompt("Please enter admin pass: ");
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             alert(this.responseText);
-            if (!this.responseText.includes("failed."))
-            {
+            if (!this.responseText.includes("failed.")) {
                 window.location = "adminPanel.php";
             }
         }
@@ -76,17 +72,13 @@ the function is for posting to get all the forms the user have
 input: username
 output: none
 */
-function seeForms(username)
-{
+function seeForms(username) {
     var xhttp = new XMLHttpRequest();
 
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
-            if (!this.responseText.includes("failed."))
-            {
-                var check = this.responseText;
-                document.getElementById("lastDiv").innerHTML =check;
-
+            if (!this.responseText.includes("failed.")) {
+                document.getElementById("lastDiv").innerHTML = this.responseText;
             }
         }
     };
@@ -101,17 +93,14 @@ the function is for posting to update the ban level for the user
 input: username
 output: none
 */
-function updateBan(username)
-{
+function updateBan(username) {
     var ban = prompt("Enter ban level: ");
-    if(!isNaN(ban))
-    {
+    if (!isNaN(ban)) {
         var xhttp = new XMLHttpRequest();
 
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                if (!this.responseText.includes("failed."))
-                {
+                if (!this.responseText.includes("failed.")) {
                     alert(this.responseText);
                 }
             }
@@ -121,7 +110,7 @@ function updateBan(username)
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.send("type=ban&uName=" + username + "&&ban=" + ban);
     }
-    else{
+    else {
         alert("you didnt enter a number!!");
     }
 }

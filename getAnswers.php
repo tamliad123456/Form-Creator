@@ -10,10 +10,13 @@ include 'checkLogin.php';
         <script src="menu.js"></script>
 
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="bootstrap.css">
+		<link rel="stylesheet" href="bootstrap.css">
+
     </head>
 
     <body id = "TheBody">
+	<?php include "back.php";?>
+
         <div class="row justify-content-center">
             <div class="col-xl-6 col-lg-7 col-md-9">
                 <div class="card shadow-lg">
@@ -71,7 +74,8 @@ function main()
 	$db = new SQLite3("database.db");
 	$guidsArr = getUserForms($db);
 	$guidsArr = explode("&&", $guidsArr);
-	for ($i = 0; $i < count($guidsArr) && $guidsArr[0] != ""; $i++)
+	$len = count($guidsArr);
+	for ($i = 0; $i < $len && $guidsArr[0] != ""; $i++)
 	{
 		echo "<a href='showStats.php?guid=$guidsArr[$i]'>Form $i </a>";
 		echo getRemoveBtn($guidsArr[$i]);

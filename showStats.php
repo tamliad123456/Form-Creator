@@ -37,12 +37,16 @@ function checkIfAllowed()
     <head>
         <title>Stats</title>
 
-            <meta charset="utf-8">
+			<meta charset="utf-8">
+			<script src="menu.js"></script>
             <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
             <link rel="stylesheet" href="bootstrap.css">
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+
     </head> 
 <body id = "TheBody">
+<?php include "back.php";?>
+
     <div class="row justify-content-center">
         <div class="col-xl-6 col-lg-7 col-md-9">
             <div class="card shadow-lg">
@@ -124,10 +128,12 @@ output: the array of just the answers
 function arrayOfAns($valuesArr)
 {
 	$arr = array();
-	for ($i = 0; $i < count($valuesArr); $i++)
+	$len1 = count($valuesArr);
+	for ($i = 0; $i < $len; $i++)
 	{
 		$ans = explode(",", $valuesArr[$i]["answer"]);
-		for ($j = 0; $j < count($ans); $j++)
+		$len2 = count($ans);
+		for ($j = 0; $j < $len2; $j++)
 		{
 			if (isset($arr[$ans[$j]]))
 			{
@@ -155,7 +161,8 @@ function addTable($number, $arr)
 	{
 		echo "<center>";
 		echo "<table border=1>";
-		for ($i = 0; $i < count($valueArr); $i++)
+		$len = count($valueArr);
+		for ($i = 0; $i < $len; $i++)
 		{
 			echo "<tr>";
 			echo "<td> <h3>" . htmlspecialchars($valueArr[$i]["clientID"], ENT_QUOTES, 'UTF-8') . "</h3></td>";

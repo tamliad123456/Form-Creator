@@ -2234,7 +2234,7 @@ textarea.form-control {
 .form-text {
   display: block;
   margin-top: 0.25rem;
-  border-radius: :3
+  border-radius: 3;
 }
 
 .form-row {
@@ -8080,9 +8080,9 @@ button.bg-dark:focus {
   box-shadow: 0 0.15rem 1rem 0.05rem rgba(140, 152, 164, 0.135) !important;
 }
 
-.shadow-lg {
-  //box-shadow: 0 10px 40px 10px rgba(255, 255, 255, 0.175) !important;
-}
+/*.shadow-lg {
+  ox-shadow: 0 10px 40px 10px rgba(255, 255, 255, 0.175) !important;
+}*/
 
 .shadow-none {
   box-shadow: none !important;

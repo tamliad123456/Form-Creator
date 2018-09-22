@@ -1,4 +1,3 @@
-
 <?php
 include 'checkLogin.php';
  ?>
@@ -24,9 +23,12 @@ function parseParams($number)
 	$string = $_POST["$number&&option1"];
 	do
 	{
-		$string = "$string&&";
-		$string = $string . $_POST["$number&&option$i"];
-		$i++;
+		if($_POST["$number&&option$i"] != "")
+		{
+			$string = "$string&&";
+			$string = $string . $_POST["$number&&option$i"];
+			$i++;
+		}
 	}
 
 	while (isset($_POST["$number&&option$i"]));
@@ -79,8 +81,9 @@ function getUserForms($db)
 
 //the main function responsible to send all the question to the db
 function main()
-{
+{	
 	$i = 1;
+	$toSub = 0;
 	$questionArr = array();
 	$GUID = uniqid();
 	do
@@ -112,31 +115,42 @@ function main()
 
 		}
 
-		$questionArr["GUID"] = $GUID;
-		$questionArr["qNum"] = $i;
+		if($questionArr["question"] != "")
+		{
+			$questionArr["GUID"] = $GUID;
+			$questionArr["qNum"] = $i - $toSub;
+			$stringToInsert = sendQuery($questionArr, $i);
+		}
+		else
+		{
+			$toSub++;
+		}
 		$i++;
-		$stringToInsert = sendQuery($questionArr, $i);
 	}
 
 	while (isset($_POST["q{$i}input"]) || isset($_POST["q{$i}checkbox"]) || isset($_POST["q{$i}radio"]));
-	$db = new SQLite3("database.db");
-	$guids = getUserForms($db);
-	$insertString = "UPDATE _users SET guid=? WHERE uName=? AND uPass=?";
-	$statement = $db->prepare($insertString);
-	if ($guids != "")
+	if($i - 1 != $toSub)
 	{
-		$statement->bindValue(1, "$guids&&$GUID");
-	}
-	else
-	{
-		$statement->bindValue(1, "$GUID");
-	}
+		$db = new SQLite3("database.db");
+		$guids = getUserForms($db);
+		$insertString = "UPDATE _users SET guid=? WHERE uName=? AND uPass=?";
+		$statement = $db->prepare($insertString);
+		if ($guids != "")
+		{
+			$statement->bindValue(1, "$guids&&$GUID");
+		}
+		else
+		{
+			$statement->bindValue(1, "$GUID");
+		}
 
-	$statement->bindValue(2, $_SESSION["username"]);
-	$statement->bindValue(3, $_SESSION["password"]);
-	$result = $statement->execute();
-	$db->close();
+		$statement->bindValue(2, $_SESSION["username"]);
+		$statement->bindValue(3, $_SESSION["password"]);
+		$result = $statement->execute();
+		$db->close();
+	}
 	header("Location: menu.php");
+	
 	exit;
 }
 

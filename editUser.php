@@ -22,12 +22,15 @@ if (!in_array($_SESSION['username'], $allowed))
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="bootstrap.css">
+
         <script src="menu.js"></script>
         <script src="Admin.js"></script>
 
 
     </head>
     <body onload = "loginWithCookie('Admin');">
+    <?php include "back.php";?>
+
     <div class="row justify-content-center">
         <div class="col-xl-6 col-lg-7 col-md-9">
             <div class="card shadow-lg">
