@@ -1,5 +1,4 @@
-
-#floating-button{
+#floating-button {
   width: 55px;
   height: 55px;
   border-radius: 50%;
@@ -11,7 +10,7 @@
   box-shadow: 0px 2px 5px #666;
 }
 
-.plus{
+.plus {
   color: white;
   position: absolute;
   top: 0;
@@ -30,7 +29,7 @@
   transition: all 0.3s;
 }
 
-#container-floating{
+#container-floating {
   position: fixed;
   width: 70px;
   height: 70px;
@@ -39,20 +38,20 @@
   z-index: 50px;
 }
 
-#container-floating:hover{
+#container-floating:hover {
   height: 400px;
   width: 90px;
   padding: 30px;
 }
 
-#container-floating:hover .plus{
+#container-floating:hover .plus {
   animation: plus-in 0.15s linear;
   animation-fill-mode: forwards;
 }
 
 
-#container-floating:hover .edit{
+#container-floating:hover .edit {
   animation: edit-in 0.2s;
-   animation-delay: 0.1s;
+  animation-delay: 0.1s;
   animation-fill-mode: forwards;
 }

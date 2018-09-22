@@ -3,15 +3,14 @@ include "checkLogin.php";
 
 //array to check if you are an admin
 $allowed = array(
-	"Tamir",
-	"Ziv",
-	"Omri"
+    "Tamir",
+    "Ziv",
+    "Omri",
 );
 
-if (!in_array($_SESSION['username'], $allowed))
-{
-	header('Location: ' . "menu.php");
-	exit();
+if (!in_array($_SESSION['username'], $allowed)) {
+    header('Location: ' . "menu.php");
+    exit();
 }
 
 ?>
@@ -41,22 +40,18 @@ $db = new SQLite3('database.db');
 $stmt = $db->prepare('SELECT uName, ban FROM _users');
 $result = $stmt->execute();
 
-while ($row = $result->fetchArray(SQLITE3_ASSOC))
-{ 
-	echo '<tr>';
-	echo "<td width=100%><h5><a href='editUser.php?id=" . htmlspecialchars($row['uName'], ENT_QUOTES, 'UTF-8') . "'>" . htmlspecialchars($row['uName'], ENT_QUOTES, 'UTF-8') . "</a></h5></td>";
-	if ($row['ban'] == 0)
-	{
-		echo "<td><input type='button' class='btn btn-primary btn-lg' style='background-color:green; border-color:green' value='" . htmlspecialchars($row['ban'], ENT_QUOTES, 'UTF-8') . "'></td>";
-	}
-	else
-	{
-		echo "<td><input type='button' class='btn btn-primary btn-lg' style='background-color:red; border-color:red' value='" . htmlspecialchars($row['ban'], ENT_QUOTES, 'UTF-8') . "'></td>";
-	}
+while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
+    echo '<tr>';
+    echo "<td width=100%><h5><a href='editUser.php?id=" . htmlspecialchars($row['uName'], ENT_QUOTES, 'UTF-8') . "'>" . htmlspecialchars($row['uName'], ENT_QUOTES, 'UTF-8') . "</a></h5></td>";
+    if ($row['ban'] == 0) {
+        echo "<td><input type='button' class='btn btn-primary btn-lg' style='background-color:green; border-color:green' value='" . htmlspecialchars($row['ban'], ENT_QUOTES, 'UTF-8') . "'></td>";
+    } else {
+        echo "<td><input type='button' class='btn btn-primary btn-lg' style='background-color:red; border-color:red' value='" . htmlspecialchars($row['ban'], ENT_QUOTES, 'UTF-8') . "'></td>";
+    }
 
-	echo '</tr>';
+    echo '</tr>';
 
-	// TODO: add btn to ban.
+    // TODO: add btn to ban.
 
 }
 

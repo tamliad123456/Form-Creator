@@ -74,16 +74,11 @@ function addRadioOrCheckBox(checkboxOrRadio) {
     var options = "";
     do {
         options = prompt("enter number of options: ");
-        if(options == "" || isNaN(options))
-        {
+        if (options == "" || isNaN(options)) {
             alert("Please insert only a number");
-        }
-        else if(!options)
-        {
+        } else if (!options) {
             return;
-        }
-        else if(options < 2 || options > 6)
-        {
+        } else if (options < 2 || options > 6) {
             alert("Please insert numbers greater than 1 and less that 6.");
         }
     }

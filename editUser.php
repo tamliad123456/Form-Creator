@@ -3,16 +3,15 @@ include "checkLogin.php";
 
 // check if you are conneected as admin
 $allowed = array(
-	"Tamir",
-	"Ziv",
-	"Omri"
+    "Tamir",
+    "Ziv",
+    "Omri",
 );
 
-if (!in_array($_SESSION['username'], $allowed))
-	{
-	header('Location: ' . "menu.php");
-	exit();
-	}
+if (!in_array($_SESSION['username'], $allowed)) {
+    header('Location: ' . "menu.php");
+    exit();
+}
 
 ?>
 
@@ -45,7 +44,7 @@ echo "<input type='button' class='btn btn-primary btn-lg' value='Delete User'onc
 echo "<input type='button' class='btn btn-primary btn-lg' value='See Forms' onclick='seeForms(\"" . htmlspecialchars($_GET["id"], ENT_QUOTES, 'UTF-8') . "\")'>";
 echo "<input type='button' class='btn btn-primary btn-lg' value='Ban' onclick='updateBan(\"" . htmlspecialchars($_GET["id"], ENT_QUOTES, 'UTF-8') . "\")'>";
 ?>
-                </center>   
+                </center>
                 <div id="lastDiv">
                 </div>
                 </div>

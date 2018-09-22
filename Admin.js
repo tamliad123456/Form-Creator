@@ -109,8 +109,7 @@ function updateBan(username) {
         xhttp.open("POST", "adminCmds.php", true);
         xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhttp.send("type=ban&uName=" + username + "&&ban=" + ban);
-    }
-    else {
+    } else {
         alert("you didnt enter a number!!");
     }
 }
