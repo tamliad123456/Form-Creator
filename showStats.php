@@ -126,7 +126,7 @@ function arrayOfAns($valuesArr)
 {
     $arr = array();
     $len1 = count($valuesArr);
-    for ($i = 0; $i < $len; $i++) {
+    for ($i = 0; $i < $len1; $i++) {
         $ans = explode(",", $valuesArr[$i]["answer"]);
         $len2 = count($ans);
         for ($j = 0; $j < $len2; $j++) {
@@ -182,9 +182,9 @@ function answerTable($QuestArr)
         if (count($arr) > 0) {
             for ($i = 0; $i < count($arr); $i++) {
                 echo "<tr>
-                <td><h3>" . $arr[$i]['clientID'] . "</h3></td>
-                                    <td><h3>" . $arr[$i]['qnum'] . "</h3></td>
-                                    <td><h3>" . $arr[$i]['answer'] . "</h3></td>
+                <td><h3>" . htmlspecialchars($arr[$i]['clientID'], ENT_QUOTES, 'UTF-8') . "</h3></td>
+                                    <td><h3>" .  htmlspecialchars($arr[$i]['qnum'], ENT_QUOTES, 'UTF-8') . "</h3></td>
+                                    <td><h3>" . htmlspecialchars($arr[$i]['answer'], ENT_QUOTES, 'UTF-8') . "</h3></td>
                                     </tr>";
             }
         } else {
@@ -205,7 +205,7 @@ function getPie($arr, $id)
 {
     if (count($arr) != 0) {
         echo "<center>";
-        echo '<canvas id="myChart' . $id . '" width="500" height="500"></canvas>';
+        echo '<canvas id="myChart' . htmlspecialchars($id, ENT_QUOTES, 'UTF-8') . '" width="500" height="500"></canvas>';
         echo '<script>
         var ctx = document.getElementById("myChart' . $id . '").getContext("2d");
                             var myChart = new Chart(ctx, {
@@ -214,20 +214,20 @@ function getPie($arr, $id)
                                     labels:';
         echo ' [';
         foreach ($arr as $key => $value) {
-            echo '"' . $key . '",';
+            echo '"' . htmlspecialchars($key, ENT_QUOTES, 'UTF-8') . '",';
         }
 
         echo '],
                                     datasets: [{
                                         label: [';
         foreach ($arr as $key => $value) {
-            echo '"' . $key . '",';
+            echo '"' .  htmlspecialchars($key, ENT_QUOTES, 'UTF-8') . '",';
         }
 
         echo "],";
         echo "data: [";
         foreach ($arr as $value) {
-            echo "$value,";
+            echo  htmlspecialchars($value, ENT_QUOTES, 'UTF-8').",";
         }
 
         echo "],";
@@ -267,11 +267,11 @@ function main()
     for ($number = 1; $number <= getNumOfQuestion(); $number++) {
         $arr = getQuestionArr();
         if ($arr[$number - 1]["type"] == "checkbox" || $arr[$number - 1]["type"] == "radio") {
-            echo '<center><h3>' . $arr[$number - 1]["question"] . '</h3></center>';
+            echo '<center><h3>' . htmlspecialchars($arr[$number - 1]["question"], ENT_QUOTES, 'UTF-8') . '</h3></center>';
             $arr = getValues($number, $arr);
             getPie(arrayOfAns($arr), $number);
         } else {
-            echo '<center><h3>' . $arr[$number - 1]["question"] . '</h3></center>';
+            echo '<center><h3>' .  htmlspecialchars($arr[$number - 1]["question"], ENT_QUOTES, 'UTF-8') . '</h3></center>';
             addTable($number, $arr);
         }
     }

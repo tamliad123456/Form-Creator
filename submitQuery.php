@@ -25,8 +25,8 @@ function parseParams($number)
         if ($_POST["$number&&option$i"] != "") {
             $string = "$string&&";
             $string = $string . $_POST["$number&&option$i"];
-            $i++;
         }
+        $i++;
     } while (isset($_POST["$number&&option$i"]));
     return $string;
 }
@@ -112,7 +112,7 @@ function main()
             $toSub++;
         }
         $i++;
-    } while (isset($_POST["q{$i}input"]) || isset($_POST["q{$i}checkbox"]) || isset($_POST["q{$i}radio"]));
+    } while (isset($_POST["q{$i}input"]) || isset($_POST["q{$i}checkbox"]) || isset($_POST["q{$i}radio"]) && $i < 50);
     if ($i - 1 != $toSub) {
         $db = new SQLite3("database.db");
         $guids = getUserForms($db);

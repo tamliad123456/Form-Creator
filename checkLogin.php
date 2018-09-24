@@ -47,7 +47,6 @@ function checkWithCookie()
         $stmt->bindValue(2, $_SESSION["password"], SQLITE3_TEXT);
         $result = $stmt->execute();
         $row = $result->fetchArray(SQLITE3_ASSOC);
-        echo $row["ban"];
         if ($row["uName"] == $_SESSION["username"] && $_SESSION["password"] == $row["uPass"] && $row["ban"] < 3) {
             setcookie("connected", hash("sha256", $row['uName'] . $row['uPass']));
         } else {
