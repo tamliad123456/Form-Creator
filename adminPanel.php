@@ -43,9 +43,12 @@ $result = $stmt->execute();
 while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
     echo '<tr>';
     echo "<td width=100%><h5><a href='editUser.php?id=" . htmlspecialchars($row['uName'], ENT_QUOTES, 'UTF-8') . "'>" . htmlspecialchars($row['uName'], ENT_QUOTES, 'UTF-8') . "</a></h5></td>";
-    if ($row['ban'] == 0) {
+    if ($row['ban'] <= 0) {
         echo "<td><input type='button' class='btn btn-primary btn-lg' style='background-color:green; border-color:green' value='" . htmlspecialchars($row['ban'], ENT_QUOTES, 'UTF-8') . "'></td>";
-    } else {
+    } else if($row['ban'] <= 2) {
+        echo "<td><input type='button' class='btn btn-primary btn-lg' style='background-color:orange; border-color:orange' value='" . htmlspecialchars($row['ban'], ENT_QUOTES, 'UTF-8') . "'></td>";
+    }
+    else {
         echo "<td><input type='button' class='btn btn-primary btn-lg' style='background-color:red; border-color:red' value='" . htmlspecialchars($row['ban'], ENT_QUOTES, 'UTF-8') . "'></td>";
     }
 

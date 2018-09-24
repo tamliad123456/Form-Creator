@@ -53,7 +53,7 @@ function checkIfAllowed()
                     <h3>Link to answer the form:</h3>
                     <input type="text" class="form-control" disabled value="
 <?php
-echo "IP/answerQuery.php?id=" . $_GET['guid'];
+echo "http://formcreator.hopto.org/answerQuery.php?id=" . $_GET['guid'];
 ?>">
                     <center>
                         <h3>Here is the Statistics for the selected form:</h3><br />
