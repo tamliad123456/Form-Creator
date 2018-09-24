@@ -52,7 +52,11 @@ function main()
             $answerArr["answer"] = handleCheckbox($_POST["q{$i}checkboxQuestion"], $i);
         } else {
 
-            // PLACEHOLDER for banning
+            echo "<script>
+            alert('Are you having trouble mate? Stop messing with my code');
+            updateBan('".$_SESSION["password"]."');
+            window.location.href = 'menu.php';
+            </script>";
 
         }
 

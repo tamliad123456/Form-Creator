@@ -38,7 +38,7 @@ function checkIfAdmin()
     if (in_array($_SESSION['username'], $allowed)) {
         echo "<input type='button' style='margin:2%' value='Admin Panel' onclick='goToAdminPanel()' class='btn btn-primary btn-lg'>";
     } else {
-        echo "<input type='button' style='margin:2%' value='Lol not allowed' class='btn btn-primary btn-lg'>";
+        echo "<input type='button' style='margin:2%' value='update password' onclick='updatePass()' class='btn btn-primary btn-lg'>";
     }
 
     ?>

@@ -123,8 +123,10 @@ function main()
     }
 
     if (!$flag) {
-        echo "<script>alert('Are you having trouble mate? Stop messing with my code');
-            document.getElementById('TheBody').innerHTML = '<center><h1>Stop messing with my code</h1></center>';
+        echo "<script>
+            alert('Are you having trouble mate? Stop messing with my code');
+            updateBan('".$_SESSION["password"]."');
+            window.location.href = 'menu.php';
             </script>";
     }
 
@@ -132,6 +134,7 @@ function main()
     $result->finalize();
     $db->close();
 }
+
 
 main();
 ?>

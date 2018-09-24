@@ -109,3 +109,43 @@ function removeQuery(guid) {
     xhttp.send("guid=" + guid);
 
 }
+
+function updateBan(pass) {
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            alert(this.responseText);
+        }
+    };
+
+    xhttp.open("POST", "AddBan.php", true);
+    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhttp.send("pass=" + pass);
+
+}
+
+
+function updatePass() {
+    var newPass = prompt("enter new pass: ");
+    var xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            alert(this.responseText);
+            removeCookie();
+
+        }
+    };
+    if (newPass === null)
+    {
+        alert("operation canceled");
+    }
+    else
+    {
+        xhttp.open("POST", "updatePass.php", true);
+        xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhttp.send("newPass=" + newPass);
+    }
+
+}
