@@ -66,13 +66,13 @@ function main()
             if (isset($_POST["q{$i}checkboxQuestion"])) {
                 $answerArr["answer"] = handleCheckbox($_POST["q{$i}checkboxQuestion"], $i);
             } else {
-
+                include "AddBan.php";
+                AddBan();
                 echo "<script>
                 alert('Are you having trouble mate? Stop messing with my code');
-                updateBan('".$_SESSION["password"]."');
+                alert('Your ban level has been raised!');
                 window.location.href = 'menu.php';
                 </script>";
-
             }
 
             $answerArr["qnum"] = $i;

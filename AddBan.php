@@ -25,19 +25,11 @@ function updateBan($banLvl)
     $db->close();
 }
 
-function main()
+function AddBan()
 {
-    if(isset($_POST["pass"]) && isset($_SESSION["password"]) && $_POST["pass"] == $_SESSION["password"])
-    {
-        $banLvl = getBanNumber();
-        $banLvl++;
-        updateBan($banLvl);
-        echo "You'r ban level has been raised!";
-    }
-    else
-    {
-        echo $_POST["pass"];
-    }
+    $banLvl = getBanNumber();
+    $banLvl++;
+    updateBan($banLvl);
 }
 
 main();

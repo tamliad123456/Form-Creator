@@ -1,5 +1,6 @@
 <?php
 include "checkLogin.php";
+checkAdmin();
 
 /*
 the function is for deleting a user from the system
@@ -20,7 +21,7 @@ function deleteUser()
     $result = $statement->execute();
     $row = $result->fetchArray(SQLITE3_ASSOC);
 
-    if ($row['uName'] == $_SESSION['username'] && $row['uPass'] == $pass) {
+    if ($row['uName'] === $_SESSION['username'] && $row['uPass'] === $pass) {
         $uname = $_POST["uName"];
         $deleteString = "DELETE FROM _users WHERE uName=?";
         $statement = $db->prepare($deleteString);
@@ -136,15 +137,15 @@ function updateBan()
 function main()
 {
     $cmd = $_POST["type"];
-    if ($cmd == "create") {
+    if ($cmd === "create") {
         addUser();
-    } else if ($cmd == "delete") {
+    } else if ($cmd === "delete") {
         deleteUser();
-    } else if ($cmd == "update") {
+    } else if ($cmd === "update") {
         changePassword();
-    } else if ($cmd == "seeForms") {
+    } else if ($cmd === "seeForms") {
         getForms();
-    } else if ($cmd == "ban") {
+    } else if ($cmd === "ban") {
         updateBan();
     }
 

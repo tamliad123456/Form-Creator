@@ -2,16 +2,7 @@
 include "checkLogin.php";
 
 //array to check if you are an admin
-$allowed = array(
-    "Tamir",
-    "Ziv",
-    "Omri",
-);
-
-if (!in_array($_SESSION['username'], $allowed)) {
-    header('Location: ' . "menu.php");
-    die();
-}
+checkAdmin();
 
 ?>
 
@@ -26,7 +17,6 @@ if (!in_array($_SESSION['username'], $allowed)) {
 
     </head>
     <body onload = "loginWithCookie('Admin');">
-    <?php include "back.php";?>
 
     <div class="row justify-content-center">
         <div class="col-xl-6 col-lg-7 col-md-9">

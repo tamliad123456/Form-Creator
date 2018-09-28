@@ -3,12 +3,12 @@ include 'checkLogin.php';
 ?>
 <html>
     <head>
-                <title>create a query</title>
+        <title>create a query</title>
 
-                <meta charset="utf-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-                <link rel="stylesheet" href="bootstrap.css">
-        </head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="bootstrap.css">
+    </head>
 <body id = "TheBody">
 
     <?php
@@ -100,10 +100,11 @@ function main()
                 $questionArr["type"] = "checkbox";
                 $questionArr["params"] = parseParams("q$i");
             } else {
-
+                include "AddBan.php";
+                AddBan();
                 echo "<script>
                 alert('Are you having trouble mate? Stop messing with my code');
-                updateBan('".$_SESSION["password"]."');
+                alert('your ban level has been raised');
                 window.location.href = 'menu.php';
                 </script>";
 

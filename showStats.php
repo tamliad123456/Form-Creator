@@ -44,7 +44,6 @@ function checkIfAllowed()
 
     </head>
 <body id = "TheBody">
-<?php include "back.php";?>
 
     <div class="row justify-content-center">
         <div class="col-xl-6 col-lg-7 col-md-9">
@@ -266,7 +265,7 @@ function main()
 {
     for ($number = 1; $number <= getNumOfQuestion(); $number++) {
         $arr = getQuestionArr();
-        if ($arr[$number - 1]["type"] == "checkbox" || $arr[$number - 1]["type"] == "radio") {
+        if ($arr[$number - 1]["type"] === "checkbox" || $arr[$number - 1]["type"] === "radio") {
             echo '<center><h3>' . htmlspecialchars($arr[$number - 1]["question"], ENT_QUOTES, 'UTF-8') . '</h3></center>';
             $arr = getValues($number, $arr);
             getPie(arrayOfAns($arr), $number);

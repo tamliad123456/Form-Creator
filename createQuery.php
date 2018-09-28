@@ -11,7 +11,6 @@
 
     </head>
 <body>
-<?php include "back.php";?>
 <form action="submitQuery.php" method="POST">
     <div id = "TheBody">
 

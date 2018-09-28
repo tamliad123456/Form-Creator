@@ -11,7 +11,6 @@
 
     </head>
     <body id = "TheBody">
-	<?php include "back.php";?>
 
         <div class="row justify-content-center">
             <div class="col-xl-6 col-lg-7 col-md-9">
@@ -55,7 +54,7 @@ function addRadio($number, $optionNumber, $arrayOfOptions)
     for ($i = 1; $i <= $optionNumber; $i++) {
         echo "\t\t\t\t\t\t<div class='input-group input-group-lg pb-2' style='flex-wrap:nowrap'>\n";
         $index = $i - 1;
-        if ($i == 1) {
+        if ($i === 1) {
             echo "\t\t\t\t\t\t<input type='Radio' class='form-control' placeholder='answer' value='" . htmlspecialchars($arrayOfOptions[$index], ENT_QUOTES, 'UTF-8') . "' id='r$number,$i' name='q$number" . "radioQuestion' width='50px' height='50px' checked";
         } else {
             echo "\t\t\t\t\t\t<input type='Radio' class='form-control' placeholder='answer' value='" . htmlspecialchars($arrayOfOptions[$index], ENT_QUOTES, 'UTF-8') . "' id='r$number,$i' name='q$number" . "radioQuestion' width='50px' height='50px'";
@@ -76,7 +75,7 @@ function addCheckBox($number, $optionNumber, $arrayOfOptions)
     for ($i = 1; $i <= $optionNumber; $i++) {
         echo "\t\t\t\t\t\t<div class='input-group input-group-lg pb-2' style='flex-wrap:nowrap'>\n";
         $index = $i - 1;
-        if ($i == 1) {
+        if ($i === 1) {
             echo "\t\t\t\t\t\t<input type='checkbox' class='form-control' placeholder='answer' value='" . htmlspecialchars($arrayOfOptions[$index], ENT_QUOTES, 'UTF-8') . "' id='c$number,$i' name='q$number" . "checkboxQuestion[]' width='50px' checked height='50px'\n";
         } else {
             echo "\t\t\t\t\t\t<input type='checkbox' class='form-control' placeholder='answer' value='" . htmlspecialchars($arrayOfOptions[$index], ENT_QUOTES, 'UTF-8') . "' id='c$number,$i' name='q$number" . "checkboxQuestion[]' width='50px' height='50px'\n";
@@ -111,21 +110,23 @@ function main()
         $flag = true;
         $parameters = parseOptions($row['parms']);
         addQuestionString($row['question']);
-        if ($row['type'] == "input") {
+        if ($row['type'] === "input") {
             addQuestion($row['qNum']);
         } else
-        if ($row['type'] == "radio") {
+        if ($row['type'] === "radio") {
             addRadio($row['qNum'], count($parameters), $parameters);
         } else
-        if ($row['type'] == "checkbox") {
+        if ($row['type'] === "checkbox") {
             addCheckBox($row['qNum'], count($parameters), $parameters);
         }
     }
 
     if (!$flag) {
+        include "AddBan.php";
+        AddBan();
         echo "<script>
             alert('Are you having trouble mate? Stop messing with my code');
-            updateBan('".$_SESSION["password"]."');
+            alert('Your ban level has been raised!');
             window.location.href = 'menu.php';
             </script>";
     }

@@ -17,7 +17,7 @@
         <?php
 include 'checkLogin.php';
 
-echo "<h1 class='display-4' style='margin:10%'>The user " . $_SESSION['username'] . " has logged on successfully</h1>";
+echo "<h1 class='display-4' style='margin:10%'>The user " . htmlspecialchars($_SESSION['username'], ENT_QUOTES, 'UTF-8') . " has logged on successfully</h1>";
 ?>
 <input type='button' style='margin:2%' value='Create Query' onclick='goToCreateQuery()' class='btn btn-primary btn-lg'>
 <input type='button' style='margin:2%' value='Show My Queries' onclick='goToGetAnswers()' class='btn btn-primary btn-lg'>
@@ -42,7 +42,7 @@ function checkIfAdmin()
     }
 
     ?>
-	<br/><input type='button' style='margin:2%' value='Logout' onclick='removeCookie()' class='btn btn-primary btn-lg'>
+	<br/><input type='button' style='margin:2%' value='Logout' onclick='LogOut()' class='btn btn-primary btn-lg'>
     </center>
     <?php
 }

@@ -50,9 +50,9 @@ the function is removing the cookie for logout
 input: none
 output: none
 */
-function removeCookie() {
-    deleteCookie("connected");
-    //deleteCookie("PHPSESSID");
+function LogOut() {
+    //deleteCookie("connected");
+    deleteCookie("PHPSESSID");
     window.location.href = "index.htm";
 }
 
@@ -80,10 +80,10 @@ function getCookie(cname) {
     var ca = decodedCookie.split(';');
     for (var i = 0; i < ca.length; i++) {
         var c = ca[i];
-        while (c.charAt(0) == ' ') {
+        while (c.charAt(0) === ' ') {
             c = c.substring(1);
         }
-        if (c.indexOf(name) == 0) {
+        if (c.indexOf(name) === 0) {
             return c.substring(name.length, c.length);
         }
     }
@@ -107,21 +107,6 @@ function removeQuery(guid) {
     xhttp.open("POST", "removeQuery.php", true);
     xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     xhttp.send("guid=" + guid);
-
-}
-
-function updateBan(pass) {
-    var xhttp = new XMLHttpRequest();
-
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            alert(this.responseText);
-        }
-    };
-
-    xhttp.open("POST", "AddBan.php", true);
-    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    xhttp.send("pass=" + pass);
 
 }
 
