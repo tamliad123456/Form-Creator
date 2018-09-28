@@ -13,20 +13,6 @@
 <body>
 <form action="submitQuery.php" method="POST">
     <div id = "TheBody">
-
-    <?php
-$username = "";
-$password = "";
-
-if (isset($_SESSION["username"]) && isset($_SESSION["password"])) {
-    $username = $_SESSION["username"];
-    $password = $_SESSION["password"];
-} else {
-    header('Location: ' . "index.php");
-}
-
-if (($username != "" && $password != "")) {
-    ?>
             <div class="row justify-content-center">';
             <div class="col-xl-6 col-lg-7 col-md-9">
                 <div class="card shadow-lg">
@@ -46,12 +32,6 @@ if (($username != "" && $password != "")) {
                 </div>
             </div>
         </div>
-        <?php
-} else {
-    header('Location: ' . "index.php");
-}
-
-?>
     </div>
     </form>
 

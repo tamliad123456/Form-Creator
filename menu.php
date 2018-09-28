@@ -30,12 +30,8 @@ output: none
  */
 function checkIfAdmin()
 {
-    $allowed = array(
-        "Tamir",
-        "Ziv",
-        "Omri",
-    );
-    if (in_array($_SESSION['username'], $allowed)) {
+    $admin = checkAdmin(true);
+    if ($admin) {
         echo "<input type='button' style='margin:2%' value='Admin Panel' onclick='goToAdminPanel()' class='btn btn-primary btn-lg'>";
     } else {
         echo "<input type='button' style='margin:2%' value='update password' onclick='updatePass()' class='btn btn-primary btn-lg'>";

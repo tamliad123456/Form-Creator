@@ -23,6 +23,7 @@ function updateBan($banLvl)
     $statement->bindValue(3, $_SESSION["password"]);
     $statement->execute();
     $db->close();
+    $_SESSION["ban"] = $banLvl;
 }
 
 function AddBan()

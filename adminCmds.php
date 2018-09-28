@@ -128,6 +128,7 @@ function updateBan()
         $statement->execute();
         $db->close();
         echo "Ban Updated Successfully";
+        $_SESSION["ban"] = $banLvl;
     } else {
         echo "Operation Canceled.";
     }

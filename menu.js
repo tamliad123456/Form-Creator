@@ -57,27 +57,6 @@ function deleteCookie(cname) {
 }
 
 /*
-the function is for getting a cookie value using his name
-input: cookie name
-output: the cookie variable
-*/
-function getCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) === ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) === 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
-}
-
-/*
 the function is for creating a remove query post request
 input: guid of what to remove
 output: none
@@ -109,7 +88,7 @@ function updatePass() {
 
         }
     };
-    if (newPass === null)
+    if (newPass == null)
     {
         alert("operation canceled");
     }

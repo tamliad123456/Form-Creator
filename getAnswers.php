@@ -31,12 +31,8 @@ output: all the guids
  */
 function getUserForms($db)
 {
-    if (isset($_SESSION["username"]) && isset($_SESSION["password"])) {
-        $username = $_SESSION["username"];
-        $password = $_SESSION["password"];
-    } else {
-        header('Location: ' . "index.php");
-    }
+    $username = $_SESSION["username"];
+    $password = $_SESSION["password"];
 
     $getQuery = "SELECT guid FROM _users WHERE uName=? AND uPass=?";
     $statement = $db->prepare($getQuery);

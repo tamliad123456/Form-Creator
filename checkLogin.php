@@ -63,7 +63,7 @@ function failedLogin()
     die();
 }
 
-function checkAdmin()
+function checkAdmin($menu = False)
 {
     $allowed = array(
         "Tamir",
@@ -72,8 +72,19 @@ function checkAdmin()
     );
     
     if (!in_array($_SESSION['username'], $allowed)) {
-        header('Location: ' . "menu.php");
-        die();
+        if(!$menu)
+        {
+            header('Location: ' . "menu.php");
+            die();
+        }
+        else
+        {
+            return false;
+        }
+    }
+    else
+    {
+        return true;
     }
 }
 
