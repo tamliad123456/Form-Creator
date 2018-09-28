@@ -35,7 +35,7 @@ function getUserForms($db)
         $username = $_SESSION["username"];
         $password = $_SESSION["password"];
     } else {
-        header('Location: ' . "index.htm");
+        header('Location: ' . "index.php");
     }
 
     $getQuery = "SELECT guid FROM _users WHERE uName=? AND uPass=?";

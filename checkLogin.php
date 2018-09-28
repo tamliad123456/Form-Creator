@@ -57,7 +57,7 @@ function failedLogin()
 {
     echo "<center>";
     echo "<h1 class='display-4' style='margin:10%'>username or password is incorrect or you have a ban contact the admin</h1>";
-    echo "<input type='button' style='margin:2%' value='return to login' onclick='removeCookie()' class='btn btn-primary btn-lg'>";
+    echo "<input type='button' style='margin:2%' value='return to login' onclick='LogOut()' class='btn btn-primary btn-lg'>";
     echo '</center>';
 
     die();

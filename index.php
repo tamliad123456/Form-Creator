@@ -8,7 +8,18 @@
     <script src="menu.js"></script>
     <link rel="stylesheet" href="bootstrap.css">
 </head>
+<?php 
+    session_start();
+    function checkIfLoggedOn()
+    {
+        if(isset($_SESSION["connected"]))
+        {
+           header("Location: ", "menu.php"); 
+        }
+    }
 
+    checkIfLoggedOn();
+    ?>
 <body onload="loginWithCookie();">
     <div class="row justify-content-center">
         <div class="col-xl-6 col-lg-7 col-md-9">

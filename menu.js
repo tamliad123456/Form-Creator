@@ -32,18 +32,6 @@ output: none
 function goToAdminPanel() {
     window.location.href = "adminPanel.php";
 }
-/*
-the function is for trying login with cookie on login screen
-input: none
-output: none
-*/
-function loginWithCookie(check = 'notAdmin') {
-
-    if (getCookie("connected") != "" && check != 'Admin') {
-        window.location.href = "menu.php";
-    }
-
-}
 
 /*
 the function is removing the cookie for logout
@@ -51,9 +39,8 @@ input: none
 output: none
 */
 function LogOut() {
-    //deleteCookie("connected");
     deleteCookie("PHPSESSID");
-    window.location.href = "index.htm";
+    window.location.href = "index.php";
 }
 
 /*

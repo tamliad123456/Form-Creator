@@ -22,7 +22,7 @@ if (isset($_SESSION["username"]) && isset($_SESSION["password"])) {
     $username = $_SESSION["username"];
     $password = $_SESSION["password"];
 } else {
-    header('Location: ' . "index.htm");
+    header('Location: ' . "index.php");
 }
 
 if (($username != "" && $password != "")) {
@@ -48,7 +48,7 @@ if (($username != "" && $password != "")) {
         </div>
         <?php
 } else {
-    header('Location: ' . "index.htm");
+    header('Location: ' . "index.php");
 }
 
 ?>

@@ -2,16 +2,7 @@
 include "checkLogin.php";
 
 // check if you are conneected as admin
-$allowed = array(
-    "Tamir",
-    "Ziv",
-    "Omri",
-);
-
-if (!in_array($_SESSION['username'], $allowed)) {
-    header('Location: ' . "menu.php");
-    die();
-}
+checkAdmin();
 
 ?>
 
