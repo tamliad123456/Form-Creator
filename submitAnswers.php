@@ -36,38 +36,59 @@ function sendQuery($answerArr, $i)
     $db->close();
 }
 
+function checkIfAlreadyAns($guid)
+{
+    $selectString = "SELECT * FROM _answers WHERE clientID=? and formGUID=?";
+    $db = new SQLite3("database.db");
+    $statement = $db->prepare($selectString);
+    $statement->bindValue(1, $_SESSION["username"]);
+    $statement->bindValue(2, $guid);
+    $result = $statement->execute();
+    $row = $result->fetchArray(SQLITE3_ASSOC);
+    $db->close();
+    return $row;
+}
+
 //the main function responsible for sending all the question to the db
 function main()
 {
-    $i = 1;
-    $answerArr = array();
-    do {
-        if (isset($_POST["q{$i}"])) {
-            $answerArr["answer"] = $_POST["q{$i}"];
-        } else
-        if (isset($_POST["q{$i}radioQuestion"])) {
-            $answerArr["answer"] = $_POST["q{$i}radioQuestion"];
-        } else
-        if (isset($_POST["q{$i}checkboxQuestion"])) {
-            $answerArr["answer"] = handleCheckbox($_POST["q{$i}checkboxQuestion"], $i);
-        } else {
+    if(checkIfAlreadyAns(explode('id=', $_SERVER['HTTP_REFERER'])[1]) <= 0)
+    {
+        $i = 1;
+        $answerArr = array();
+        do {
+            if (isset($_POST["q{$i}"])) {
+                $answerArr["answer"] = $_POST["q{$i}"];
+            } else
+            if (isset($_POST["q{$i}radioQuestion"])) {
+                $answerArr["answer"] = $_POST["q{$i}radioQuestion"];
+            } else
+            if (isset($_POST["q{$i}checkboxQuestion"])) {
+                $answerArr["answer"] = handleCheckbox($_POST["q{$i}checkboxQuestion"], $i);
+            } else {
 
-            echo "<script>
-            alert('Are you having trouble mate? Stop messing with my code');
-            updateBan('".$_SESSION["password"]."');
-            window.location.href = 'menu.php';
-            </script>";
+                echo "<script>
+                alert('Are you having trouble mate? Stop messing with my code');
+                updateBan('".$_SESSION["password"]."');
+                window.location.href = 'menu.php';
+                </script>";
 
-        }
+            }
 
-        $answerArr["qnum"] = $i;
-        $answerArr["formGUID"] = explode('id=', $_SERVER['HTTP_REFERER'])[1];
-        $stringToInsert = sendQuery($answerArr, $i);
-        $i++;
-    } while (isset($_POST["q{$i}"]) || isset($_POST["q{$i}radioQuestion"]) || isset($_POST["q{$i}checkboxQuestion"]));
-    echo '<script> alert("Thank for submitting the form");
-                window.location.replace("menu.php");
-                </script>';
+            $answerArr["qnum"] = $i;
+            $answerArr["formGUID"] = explode('id=', $_SERVER['HTTP_REFERER'])[1];
+            $stringToInsert = sendQuery($answerArr, $i);
+            $i++;
+        } while (isset($_POST["q{$i}"]) || isset($_POST["q{$i}radioQuestion"]) || isset($_POST["q{$i}checkboxQuestion"]));
+        echo '<script> alert("Thank for submitting the form");
+                    window.location.replace("menu.php");
+                    </script>';
+    }
+    else{
+        echo '<script> alert("Form already submitted contact the admin!");
+                    window.location.replace("menu.php");
+                    </script>';
+    }
 }
 
 main();

@@ -26,7 +26,7 @@ function checkIfAllowed()
     );
     if (!in_array($_SESSION['username'], $allowed) && !in_array($_GET["guid"], $guidsArr)) {
         header('Location: ' . "menu.php");
-        exit();
+        die();
     }
 }
 

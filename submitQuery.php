@@ -78,60 +78,70 @@ function main()
     $i = 1;
     $toSub = 0;
     $questionArr = array();
-    $GUID = uniqid();
-    do {
-        if (isset($_POST["q{$i}input"])) {
-            $questionArr["question"] = $_POST["q{$i}input"];
-            $questionArr["type"] = "input";
-            $questionArr["params"] = "";
-        } else
-        if (isset($_POST["q{$i}radio"])) {
-            $questionArr["question"] = $_POST["q{$i}radio"];
-            $questionArr["type"] = "radio";
-            $questionArr["params"] = parseParams("q$i");
-        } else
-        if (isset($_POST["q{$i}checkbox"])) {
-            $questionArr["question"] = $_POST["q{$i}checkbox"];
-            $questionArr["type"] = "checkbox";
-            $questionArr["params"] = parseParams("q$i");
-        } else {
+    $db = new SQLite3("database.db");
+    $guids = getUserForms($db);
+    $db->close();
+    if(count(explode("&&",$guids)) < 10)
+    {
+        $GUID = uniqid();
+        do {
+            if (isset($_POST["q{$i}input"])) {
+                $questionArr["question"] = $_POST["q{$i}input"];
+                $questionArr["type"] = "input";
+                $questionArr["params"] = "";
+            } else
+            if (isset($_POST["q{$i}radio"])) {
+                $questionArr["question"] = $_POST["q{$i}radio"];
+                $questionArr["type"] = "radio";
+                $questionArr["params"] = parseParams("q$i");
+            } else
+            if (isset($_POST["q{$i}checkbox"])) {
+                $questionArr["question"] = $_POST["q{$i}checkbox"];
+                $questionArr["type"] = "checkbox";
+                $questionArr["params"] = parseParams("q$i");
+            } else {
 
-            echo "<script>
-            alert('Are you having trouble mate? Stop messing with my code');
-            updateBan('".$_SESSION["password"]."');
-            window.location.href = 'menu.php';
-            </script>";
+                echo "<script>
+                alert('Are you having trouble mate? Stop messing with my code');
+                updateBan('".$_SESSION["password"]."');
+                window.location.href = 'menu.php';
+                </script>";
 
+            }
+
+            if ($questionArr["question"] != "") {
+                $questionArr["GUID"] = $GUID;
+                $questionArr["qNum"] = $i - $toSub;
+                $stringToInsert = sendQuery($questionArr, $i);
+            } else {
+                $toSub++;
+            }
+            $i++;
+        } while (isset($_POST["q{$i}input"]) || isset($_POST["q{$i}checkbox"]) || isset($_POST["q{$i}radio"]) && $i < 50);
+        if ($i - 1 != $toSub) {
+            $db = new SQLite3("database.db");
+            $guids = getUserForms($db);
+            $insertString = "UPDATE _users SET guid=? WHERE uName=? AND uPass=?";
+            $statement = $db->prepare($insertString);
+            if ($guids != "") {
+                $statement->bindValue(1, "$guids&&$GUID");
+            } else {
+                $statement->bindValue(1, "$GUID");
+            }
+
+            $statement->bindValue(2, $_SESSION["username"]);
+            $statement->bindValue(3, $_SESSION["password"]);
+            $result = $statement->execute();
+            $db->close();
         }
+        header("Location: menu.php");
 
-        if ($questionArr["question"] != "") {
-            $questionArr["GUID"] = $GUID;
-            $questionArr["qNum"] = $i - $toSub;
-            $stringToInsert = sendQuery($questionArr, $i);
-        } else {
-            $toSub++;
-        }
-        $i++;
-    } while (isset($_POST["q{$i}input"]) || isset($_POST["q{$i}checkbox"]) || isset($_POST["q{$i}radio"]) && $i < 50);
-    if ($i - 1 != $toSub) {
-        $db = new SQLite3("database.db");
-        $guids = getUserForms($db);
-        $insertString = "UPDATE _users SET guid=? WHERE uName=? AND uPass=?";
-        $statement = $db->prepare($insertString);
-        if ($guids != "") {
-            $statement->bindValue(1, "$guids&&$GUID");
-        } else {
-            $statement->bindValue(1, "$GUID");
-        }
-
-        $statement->bindValue(2, $_SESSION["username"]);
-        $statement->bindValue(3, $_SESSION["password"]);
-        $result = $statement->execute();
-        $db->close();
+        die();
     }
-    header("Location: menu.php");
-
-    exit;
+    else
+    {
+        header("Location: isntCreated.htm");
+    }
 }
 
 main();

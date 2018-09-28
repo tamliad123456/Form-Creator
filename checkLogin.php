@@ -84,7 +84,7 @@ function failedLogin($var)
         header('Location: ' . "index.htm");
     }
 
-    exit();
+    die();
 }
 
 if (isset($_POST['Username']) && isset($_POST['Password'])) {

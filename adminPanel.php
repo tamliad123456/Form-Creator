@@ -10,7 +10,7 @@ $allowed = array(
 
 if (!in_array($_SESSION['username'], $allowed)) {
     header('Location: ' . "menu.php");
-    exit();
+    die();
 }
 
 ?>
