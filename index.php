@@ -20,7 +20,7 @@
 
     checkIfLoggedOn();
     ?>
-<body onload="loginWithCookie();">
+<body>
     <div class="row justify-content-center">
         <div class="col-xl-6 col-lg-7 col-md-9">
             <div class="card shadow-lg">
