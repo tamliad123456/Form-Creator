@@ -31,4 +31,4 @@
                 <button class="btn-menu" onclick="window.location.href='Menu.php'"> Menu </button>
             </div>
         </div>
-        <div class="card">
+        <div class="card" id="card">
